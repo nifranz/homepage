@@ -8,6 +8,9 @@
   --line: #d8ccb9;
   --accent: #9f6535;
   --typewriter: 'Courier Prime', 'Courier New', monospace;
+  --scroll-y: 0px;
+  --scroll-progress: 0;
+  --scroll-velocity: 0;
 }
 
 * {
@@ -28,6 +31,7 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   color: var(--text);
+  overflow-x: clip;
   background:
     radial-gradient(circle at 5% 5%, #fff6e7 0%, transparent 35%),
     radial-gradient(circle at 88% 18%, #edd9bf 0%, transparent 30%),
@@ -39,6 +43,320 @@ body {
   max-width: none;
   margin: 0;
   padding: 20px 30px 0;
+  position: relative;
+  isolation: isolate;
+}
+
+.page-content {
+  position: relative;
+  z-index: 2;
+}
+
+.scroll-artifacts {
+  --scroll-y: 0px;
+  --scroll-progress: 0;
+  --scroll-velocity: 0;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  perspective: 1200px;
+}
+
+.artifact {
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+.artifact-micro-sphere {
+  z-index: 5;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 30%, color-mix(in srgb, #fff5e7, var(--bg-soft) 20%) 0%, transparent 35%),
+    radial-gradient(circle at 60% 62%, color-mix(in srgb, var(--accent), #f6d0a2 65%) 0%, color-mix(in srgb, var(--accent), #9a6438 30%) 70%, #7c4e2b 100%);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent), white 58%);
+}
+
+.artifact-micro-sphere-1 {
+  width: clamp(28px, 2.6vw, 42px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 56%;
+  opacity: calc(0.2 + var(--scroll-velocity) * 0.12);
+  transform:
+    translate3d(-50%, -50%, 0)
+    translate3d(
+      calc(-320px + var(--scroll-progress) * 420px),
+      calc(-208px + var(--scroll-progress) * 260px + var(--scroll-y) * -0.06),
+      0
+    )
+    scale(calc(0.94 + var(--scroll-progress) * 0.11));
+}
+
+.artifact-micro-sphere-2 {
+  width: clamp(18px, 2vw, 30px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 56%;
+  opacity: calc(0.18 + var(--scroll-velocity) * 0.1);
+  transform:
+    translate3d(-50%, -50%, 0)
+    translate3d(
+      calc(278px + var(--scroll-progress) * -390px),
+      calc(-158px + var(--scroll-progress) * -230px + var(--scroll-y) * 0.055),
+      0
+    )
+    scale(calc(0.88 + var(--scroll-progress) * 0.12));
+}
+
+.artifact-micro-sphere-3 {
+  width: clamp(20px, 2.1vw, 34px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 56%;
+  opacity: calc(0.16 + var(--scroll-velocity) * 0.11);
+  transform:
+    translate3d(-50%, -50%, 0)
+    translate3d(
+      calc(-210px + var(--scroll-progress) * -260px),
+      calc(188px + var(--scroll-progress) * -360px + var(--scroll-y) * -0.065),
+      0
+    )
+    scale(calc(0.9 + var(--scroll-progress) * 0.1));
+}
+
+.artifact-micro-sphere-4 {
+  width: clamp(24px, 2.3vw, 38px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 56%;
+  opacity: calc(0.18 + var(--scroll-velocity) * 0.12);
+  transform:
+    translate3d(-50%, -50%, 0)
+    translate3d(
+      calc(235px + var(--scroll-progress) * 260px),
+      calc(158px + var(--scroll-progress) * 220px + var(--scroll-y) * 0.05),
+      0
+    )
+    scale(calc(0.92 + var(--scroll-progress) * 0.11));
+}
+
+.artifact-orbit-node {
+  z-index: 5;
+  width: clamp(8px, 1.2vw, 14px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent), white 44%);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent), white 60%);
+}
+
+.artifact-orbit-node-1 {
+  left: 50%;
+  top: 56%;
+  opacity: calc(0.22 + var(--scroll-velocity) * 0.12);
+  transform:
+    translate3d(-50%, -50%, 0)
+    translate3d(
+      calc(-360px + var(--scroll-progress) * 360px),
+      calc(-38px + var(--scroll-progress) * -120px + var(--scroll-y) * -0.05),
+      0
+    );
+}
+
+.artifact-orbit-node-2 {
+  left: 50%;
+  top: 56%;
+  opacity: calc(0.18 + var(--scroll-velocity) * 0.1);
+  transform:
+    translate3d(-50%, -50%, 0)
+    translate3d(
+      calc(352px + var(--scroll-progress) * -330px),
+      calc(46px + var(--scroll-progress) * 130px + var(--scroll-y) * 0.048),
+      0
+    );
+}
+
+.artifact-orbit-node-3 {
+  left: 50%;
+  top: 56%;
+  opacity: calc(0.16 + var(--scroll-velocity) * 0.12);
+  transform:
+    translate3d(-50%, -50%, 0)
+    translate3d(
+      calc(-98px + var(--scroll-progress) * -150px),
+      calc(284px + var(--scroll-progress) * -320px + var(--scroll-y) * -0.055),
+      0
+    );
+}
+
+.artifact-orbit-node-4 {
+  left: 50%;
+  top: 56%;
+  opacity: calc(0.16 + var(--scroll-velocity) * 0.1);
+  transform:
+    translate3d(-50%, -50%, 0)
+    translate3d(
+      calc(120px + var(--scroll-progress) * 160px),
+      calc(-286px + var(--scroll-progress) * 340px + var(--scroll-y) * 0.052),
+      0
+    );
+}
+
+.artifact-foreground-ring {
+  z-index: 4;
+  left: 50%;
+  top: 56%;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.artifact-foreground-ring-1 {
+  width: clamp(700px, 88vmin, 1260px);
+  height: clamp(230px, 28vmin, 370px);
+  border: 1px solid color-mix(in srgb, var(--accent), white 45%);
+  opacity: calc(0.065 + var(--scroll-velocity) * 0.07);
+  transform:
+    translate3d(-50%, calc(-50% + var(--scroll-y) * -0.052), 0)
+    rotate(calc(-8deg + var(--scroll-progress) * 210deg));
+}
+
+.artifact-foreground-ring-2 {
+  width: clamp(660px, 82vmin, 1160px);
+  height: clamp(206px, 25vmin, 330px);
+  border: 1px dashed color-mix(in srgb, var(--accent), white 42%);
+  opacity: calc(0.052 + var(--scroll-velocity) * 0.06);
+  transform:
+    translate3d(-50%, calc(-50% + var(--scroll-y) * 0.045), 0)
+    rotate(calc(18deg + var(--scroll-progress) * -230deg));
+}
+
+.artifact-sphere-halo {
+  z-index: 1;
+  width: clamp(640px, 78vmin, 1180px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 56%;
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 52%, color-mix(in srgb, var(--accent), #ffe8cb 76%) 0%, transparent 68%);
+  opacity: 0.16;
+  filter: blur(20px);
+  transform:
+    translate3d(-50%, calc(-50% + var(--scroll-y) * -0.005), 0)
+    scale(calc(1 + var(--scroll-progress) * 0.035));
+}
+
+.artifact-sphere-core {
+  z-index: 2;
+  width: clamp(500px, 62vmin, 920px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 56%;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 32% 26%, color-mix(in srgb, #fff4e2, var(--bg-soft) 45%) 0%, transparent 36%),
+    radial-gradient(circle at 68% 73%, color-mix(in srgb, var(--accent), #f9d6ad 68%) 0%, transparent 72%),
+    radial-gradient(circle at 52% 54%, #dbb68a 0%, #c39365 56%, #a86d3e 100%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent), white 55%),
+    inset -28px -34px 52px color-mix(in srgb, var(--accent), black 12%);
+  opacity: 0.14;
+  transform:
+    translate3d(-50%, calc(-50% + var(--scroll-y) * -0.008), 0)
+    scale(calc(1 + var(--scroll-progress) * 0.028));
+}
+
+.artifact-sphere-shade {
+  z-index: 2;
+  width: clamp(500px, 62vmin, 920px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 56%;
+  border-radius: 999px;
+  background:
+    conic-gradient(
+      from 180deg at 55% 48%,
+      color-mix(in srgb, var(--accent), black 10%) 0deg,
+      transparent 90deg,
+      transparent 250deg,
+      color-mix(in srgb, var(--accent), white 25%) 320deg,
+      color-mix(in srgb, var(--accent), black 10%) 360deg
+    );
+  opacity: 0.06;
+  transform:
+    translate3d(-50%, calc(-50% + var(--scroll-y) * -0.008), 0)
+    rotate(calc(var(--scroll-progress) * 24deg));
+}
+
+.artifact-sphere-grid {
+  z-index: 2;
+  width: clamp(500px, 62vmin, 920px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 56%;
+  border-radius: 999px;
+  background:
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      transparent 0%,
+      transparent 10%,
+      color-mix(in srgb, var(--accent), white 45%) 10.2%,
+      transparent 10.6%,
+      transparent 18%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 8%,
+      color-mix(in srgb, var(--accent), white 40%) 8.2%,
+      transparent 8.6%,
+      transparent 16%
+    );
+  opacity: 0.06;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 58%, transparent 90%);
+  mask-image: radial-gradient(circle at 50% 50%, black 58%, transparent 90%);
+  transform:
+    translate3d(-50%, calc(-50% + var(--scroll-y) * -0.007), 0)
+    rotate(calc(var(--scroll-progress) * 70deg));
+}
+
+.artifact-orbit {
+  z-index: 3;
+  left: 50%;
+  top: 56%;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent), white 38%);
+  filter: blur(0.2px);
+}
+
+.artifact-orbit-1 {
+  width: clamp(610px, 76vmin, 1100px);
+  height: clamp(170px, 20vmin, 300px);
+  opacity: calc(0.07 + var(--scroll-velocity) * 0.1);
+  transform:
+    translate3d(-50%, calc(-50% + var(--scroll-y) * -0.04), 0)
+    rotate(calc(-14deg + var(--scroll-progress) * 180deg));
+}
+
+.artifact-orbit-2 {
+  width: clamp(520px, 64vmin, 940px);
+  height: clamp(140px, 17vmin, 240px);
+  border-style: dashed;
+  opacity: calc(0.05 + var(--scroll-velocity) * 0.08);
+  transform:
+    translate3d(-50%, calc(-50% + var(--scroll-y) * 0.036), 0)
+    rotate(calc(8deg + var(--scroll-progress) * -165deg));
+}
+
+.artifact-space-grain {
+  z-index: 0;
+  inset: 0;
+  opacity: 0.05;
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--accent), white 35%) 1.1px, transparent 1.2px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(circle at 50% 56%, black 20%, transparent 78%);
+  mask-image: radial-gradient(circle at 50% 56%, black 20%, transparent 78%);
+  transform: translate3d(0, calc(var(--scroll-y) * -0.03), 0);
 }
 
 .site-header {
@@ -190,6 +508,7 @@ main {
 .section {
   padding-top: 6rem;
   margin-inline: 100px;
+  position: relative;
 }
 
 .section-head {
@@ -774,6 +1093,10 @@ main {
     transition: none;
     will-change: auto;
   }
+
+  .scroll-artifacts {
+    display: none;
+  }
 }
 
 @media (max-width: 700px) {
@@ -806,6 +1129,47 @@ main {
 
   .section {
     margin-inline: 0;
+  }
+
+  .artifact-orbit {
+    display: none;
+  }
+
+  .artifact-foreground-ring {
+    display: none;
+  }
+
+  .artifact-micro-sphere-3,
+  .artifact-micro-sphere-4,
+  .artifact-orbit-node-3,
+  .artifact-orbit-node-4 {
+    display: none;
+  }
+
+  .artifact-micro-sphere {
+    opacity: 0.14;
+  }
+
+  .artifact-orbit-node {
+    opacity: 0.12;
+  }
+
+  .artifact-sphere-halo {
+    width: clamp(520px, 106vw, 760px);
+    top: 59%;
+    opacity: 0.11;
+  }
+
+  .artifact-sphere-core,
+  .artifact-sphere-shade,
+  .artifact-sphere-grid {
+    width: clamp(410px, 84vw, 620px);
+    top: 59%;
+  }
+
+  .artifact-space-grain {
+    opacity: 0.035;
+    background-size: 20px 20px;
   }
 
   .experience-grid > .experience-card:last-child:nth-child(odd) {
