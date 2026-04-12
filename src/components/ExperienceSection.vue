@@ -10,21 +10,21 @@ defineProps({
 </script>
 
 <template>
-  <section class="section" id="experience">
-    <SectionHeader index="01" title="Skillset" />
+  <section class="section" id="expertise">
+    <SectionHeader
+      index="01"
+      title="Expertise"
+      description="Hands-on expertise across infrastructure, development, and operations - built for real impact."
+    />
 
-    <div class="experience-timeline">
+    <div class="experience-grid">
       <article
         v-for="(skill, index) in skills"
         :key="skill.title"
-        class="experience-row"
-        :class="{ flipped: index % 2 !== 0 }"
-        v-reveal="{
-          delay: index * 90,
-          direction: index % 2 === 0 ? 'left' : 'right',
-        }"
+        class="experience-card"
+        v-reveal="{ delay: index * 90, direction: 'up' }"
       >
-        <div class="experience-title-pane">
+        <div class="experience-card-head">
           <span class="experience-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
               <path
@@ -40,11 +40,9 @@ defineProps({
           </span>
           <h3>{{ skill.title }}</h3>
         </div>
-        <div class="experience-content-pane">
-          <ul>
-            <li v-for="point in skill.points" :key="point">{{ point }}</li>
-          </ul>
-        </div>
+        <ul class="experience-card-list">
+          <li v-for="point in skill.points" :key="point">{{ point }}</li>
+        </ul>
       </article>
     </div>
   </section>

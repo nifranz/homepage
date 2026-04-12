@@ -72,32 +72,39 @@ export const coreSkills = [
 ];
 
 export const tools = [
-  { name: "Vue.js", icon: "vuedotjs", color: "#4FC08D" },
-  { name: "TypeScript", icon: "typescript", color: "#3178C6" },
-  { name: "Node.js", icon: "nodedotjs", color: "#5FA04E" },
-  { name: "npm", icon: "npm", color: "#CB3837" },
-  { name: "Express.js", icon: "express", color: "#000000" },
-  { name: "Python", icon: "python", color: "#3776AB" },
-  { name: "R", icon: "r", color: "#276DC3" },
-  { name: "Unity", icon: "unity", color: "#000000" },
-  { name: "M365", icon: "microsoftoffice", color: "#D83B01" },
-  { name: "Django", icon: "django", color: "#092E20" },
-  { name: "Docker", icon: "docker", color: "#2496ED" },
-  { name: "Docker Compose", icon: "docker", color: "#2496ED" },
-  { name: "GitLab CI/CD", icon: "gitlab", color: "#FC6D26" },
-  { name: "HCL Notes", icon: "hcl", color: "#0066B3" },
-  { name: "HCL Domino", icon: "hcl", color: "#0066B3" },
-  { name: "Nextcloud", icon: "nextcloud", color: "#0082C9" },
-  { name: "OnlyOffice", icon: "onlyoffice", color: "#444444" },
-  { name: "vSphere", icon: "vmware", color: "#607078" },
-  { name: "Veeam", icon: "veeam", color: "#00B336" },
-  { name: "Ubiquiti", icon: "ubiquiti", color: "#0559C9" },
-  { name: "SAN", icon: "netapp", color: "#0067C5" },
-  { name: "SSL/TLS", icon: "openssl", color: "#721412" },
-  { name: "Firewall", icon: "fortinet", color: "#EE3124" },
-  { name: "DNS", icon: "nextdns", color: "#007BFF" },
-  { name: "SSO", icon: "keycloak", color: "#4D4D4D" },
-  { name: "AR/VR", icon: "meta", color: "#0467DF" },
+  // web frameworks and languages
+  { name: "Vue.js", icon: "vuedotjs", color: "#4FC08D", link: "https://vuejs.org/" },
+  { name: "TypeScript", icon: "typescript", color: "#3178C6", link: "https://www.typescriptlang.org/" },
+  { name: "Tailwind CSS", icon: "tailwindcss", color: "#06B6D4", link: "https://tailwindcss.com/" },
+  { name: "shadcn/ui", icon: "shadcnui", color: "#000000", link: "https://ui.shadcn.com/" },
+  { name: "Figma", icon: "figma", color: "#F24E1E", link: "https://www.figma.com/" },
+  { name: "Django", icon: "django", color: "#092E20", link: "https://www.djangoproject.com/" },
+  { name: "Express.js", icon: "express", color: "#000000", link: "https://expressjs.com/" },
+  { name: "React", icon: "react", color: "#61DAFB", link: "https://react.dev/" },
+  { name: "PHP", icon: "php", color: "#777BB4", link: "https://www.php.net/" },
+  { name: "Sequelize", icon: "sequelize", color: "#52B0E7", link: "https://sequelize.org/" },
+  // infrastrcture and architecture 
+  { name: "Linux", icon: "linux", color: "#000000", link: "https://www.kernel.org/" },
+  { name: "macOS", icon: "apple", color: "#000000", link: "https://www.apple.com/macos/" },
+  { name: "Docker", icon: "docker", color: "#2496ED", link: "https://www.docker.com/" },
+  { name: "GitLab CI/CD", icon: "gitlab", color: "#FC6D26", link: "https://docs.gitlab.com/ee/ci/" },
+  { name: "vSphere", icon: "vmware", color: "#607078", link: "https://www.vmware.com/products/cloud-infrastructure/vsphere.html" },
+  // other languages and frameworks
+  { name: "Python", icon: "python", color: "#3776AB", link: "https://www.python.org/" },
+  { name: "R", icon: "r", color: "#276DC3", link: "https://www.r-project.org/" },
+  { name: "C#", icon: "csharp", color: "#512BD4", link: "https://dotnet.microsoft.com/en-us/languages/csharp" },
+  { name: "Unity", icon: "unity", color: "#000000", link: "https://unity.com/" },
+  { name: "AR/VR", icon: "meta", color: "#0467DF", link: "https://www.meta.com/quest/quest-3/" },
+  // groupware
+  { name: "M365", icon: "microsoftoffice", color: "#D83B01", link: "https://www.microsoft.com/microsoft-365" },
+  { name: "HCL Notes", icon: "hcl", color: "#0066B3", link: "https://www.hcl-software.com/notes" },
+  { name: "Nextcloud", icon: "nextcloud", color: "#0082C9", link: "https://nextcloud.com/" },
+  { name: "OnlyOffice", icon: "onlyoffice", color: "#444444", link: "https://www.onlyoffice.com/" },
+  // network stack
+  { name: "SSL/TLS", icon: "openssl", color: "#721412", link: "https://www.openssl.org/" },
+  // { name: "Firewall", icon: "fortinet", color: "#EE3124" },
+  { name: "DNS", icon: "nextdns", color: "#007BFF", link: "https://nextdns.io/" },
+  { name: "SSO", icon: "keycloak", color: "#4D4D4D", link: "https://www.keycloak.org/" },
 ];
 
 export const projects = [
@@ -168,10 +175,10 @@ export const contactLinks = [
   {
     label: "Email",
     title: "Drop me a line",
-    description: "your.email@example.com",
+    description: "hello@niklasfranz.de",
     icon: "gmail",
+    href: "mailto:hello@niklasfranz.de?subject=Hello%20Niklas",
     color: "#EA4335",
-    href: "mailto:your.email@example.com?subject=Hello%20Niklas",
   },
   {
     label: "LinkedIn",
@@ -208,7 +215,7 @@ export const footerLegalLinks = [
 
 export const footerSitemapLinks = [
   { label: "Home", href: "#hero" },
-  { label: "Experience", href: "#experience" },
+  { label: "Expertise", href: "#expertise" },
   { label: "Tools", href: "#tools" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },

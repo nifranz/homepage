@@ -8,12 +8,19 @@ defineProps({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    default: "",
+  },
 });
 </script>
 
 <template>
   <div class="section-head">
-    <span>{{ index }}</span>
-    <h2>{{ title }}</h2>
+    <div class="section-title-row">
+      <span>{{ index }}</span>
+      <h2>{{ title }}</h2>
+    </div>
+    <p v-if="description" class="section-subtitle">{{ description }}</p>
   </div>
 </template>

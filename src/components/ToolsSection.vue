@@ -10,7 +10,7 @@ const props = defineProps({
   },
 });
 
-const MAX_TOOLS_PER_ROW = 6;
+const MAX_TOOLS_PER_ROW = 7;
 
 const toolRows = computed(() => {
   const rows = [];
@@ -23,15 +23,25 @@ const toolRows = computed(() => {
 
 <template>
   <section class="section" id="tools">
-    <SectionHeader index="02" title="Tools" />
+    <SectionHeader
+      index="02"
+      title="Tools"
+      description="A battle-tested toolkit I use to design, ship, and run dependable software at speed."
+    />
 
     <div class="tool-list">
       <div class="tool-row" v-for="(row, rowIndex) in toolRows" :key="`row-${rowIndex}`">
-        <span
+        <a
           class="tool-pill"
           v-for="(tool, index) in row"
           :key="tool.name"
-          v-reveal="{ delay: (rowIndex * 6 + index) * 45, direction: 'up' }"
+          :href="tool.link"
+          target="_blank"
+          rel="noopener noreferrer"
+          v-reveal="{
+            delay: (rowIndex * MAX_TOOLS_PER_ROW + index) * 45,
+            direction: 'up',
+          }"
         >
           <Icon
             class="tool-icon"
@@ -40,7 +50,7 @@ const toolRows = computed(() => {
             aria-hidden="true"
           />
           <span>{{ tool.name }}</span>
-        </span>
+        </a>
       </div>
     </div>
   </section>

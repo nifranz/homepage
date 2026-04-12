@@ -1,5 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from "vue";
+import { Icon } from "@iconify/vue";
 
 defineProps({
   name: {
@@ -23,7 +24,10 @@ function syncHeroOffset() {
     return;
   }
 
-  heroRef.value.style.setProperty("--hero-offset", `${heroRef.value.offsetTop}px`);
+  heroRef.value.style.setProperty(
+    "--hero-offset",
+    `${heroRef.value.offsetTop}px`,
+  );
 }
 
 function handleResize() {
@@ -89,12 +93,32 @@ onBeforeUnmount(() => {
         />
         <span>Hi, I am</span>
       </div>
-      <h1 class="hero-part hero-part-2">{{ name }}</h1>
+      <h1 class="hero-part hero-part-2">
+        {{ name }}<span style="font-size: 70pt; font-weight: lighter">,</span>
+      </h1>
       <p class="hero-part hero-part-3">{{ description }}</p>
     </div>
     <div class="hero-location" aria-label="Location">
       <span>based in</span>
       <strong>Berlin</strong>
+    </div>
+    <div class="credits">
+      <a
+        class="credits-link"
+        href="https://github.com/nifranz"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        &lt; developed with <span class="heart" aria-hidden="true">♥</span> by
+        <span class="github-link">
+          <Icon
+            class="github-icon"
+            icon="simple-icons:github"
+            aria-hidden="true"
+          />@nifranz
+        </span>
+        / &gt;
+      </a>
     </div>
   </section>
 </template>
