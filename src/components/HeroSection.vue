@@ -1,0 +1,100 @@
+<script setup>
+import { onBeforeUnmount, onMounted, ref } from "vue";
+
+defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
+
+const waveEmojiRef = ref(null);
+const heroRef = ref(null);
+let waveObserver;
+let waveWasVisible = false;
+let resizeRafId = null;
+
+function syncHeroOffset() {
+  if (!heroRef.value) {
+    return;
+  }
+
+  heroRef.value.style.setProperty("--hero-offset", `${heroRef.value.offsetTop}px`);
+}
+
+function handleResize() {
+  if (resizeRafId !== null) {
+    cancelAnimationFrame(resizeRafId);
+  }
+
+  resizeRafId = requestAnimationFrame(() => {
+    syncHeroOffset();
+    resizeRafId = null;
+  });
+}
+
+onMounted(() => {
+  syncHeroOffset();
+  window.addEventListener("resize", handleResize);
+
+  if (!waveEmojiRef.value) {
+    return;
+  }
+
+  waveObserver = new IntersectionObserver(
+    (entries) => {
+      const [entry] = entries;
+      const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
+
+      if (isVisible && !waveWasVisible && waveEmojiRef.value) {
+        const emoji = waveEmojiRef.value;
+        emoji.classList.remove("wave-once");
+        requestAnimationFrame(() => {
+          emoji.classList.add("wave-once");
+        });
+      }
+
+      waveWasVisible = isVisible;
+    },
+    { threshold: [0, 0.35, 1] },
+  );
+
+  waveObserver.observe(waveEmojiRef.value);
+});
+
+onBeforeUnmount(() => {
+  waveObserver?.disconnect();
+  window.removeEventListener("resize", handleResize);
+  if (resizeRafId !== null) {
+    cancelAnimationFrame(resizeRafId);
+  }
+});
+</script>
+
+<template>
+  <section ref="heroRef" class="hero" id="hero">
+    <div class="hero-copy">
+      <div class="hero-kicker hero-part hero-part-1">
+        <img
+          ref="waveEmojiRef"
+          class="wave-emoji"
+          src="https://em-content.zobj.net/thumbs/160/apple/354/waving-hand_1f44b.png"
+          alt="Waving hand"
+          width="28"
+          height="28"
+        />
+        <span>Hi, I am</span>
+      </div>
+      <h1 class="hero-part hero-part-2">{{ name }}</h1>
+      <p class="hero-part hero-part-3">{{ description }}</p>
+    </div>
+    <div class="hero-location" aria-label="Location">
+      <span>based in</span>
+      <strong>Berlin</strong>
+    </div>
+  </section>
+</template>
