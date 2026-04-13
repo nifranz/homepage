@@ -387,31 +387,41 @@ body {
 }
 
 .logo {
-  overflow: visible;
+  overflow: hidden;
   shape-rendering: geometricPrecision;
 }
 
 .logo__part {
   --move-x: 0px;
   --move-y: 0px;
-  opacity: 0;
   translate: var(--move-x) var(--move-y);
-  animation: logo-part-in 360ms ease-out forwards;
+  animation: logo-part-in 320ms cubic-bezier(0.22, 0.78, 0.2, 1) forwards;
   animation-delay: var(--d, 0ms);
-  will-change: opacity, translate;
+  will-change: translate;
 }
 
 .logo__bar-left {
-  --move-y: 12px;
+  --move-y: 120px;
 }
 
-.logo__cross {
-  --move-x: 12px;
+.logo__bar-right {
+  --move-y: 120px;
+}
+
+.logo__cross-right {
+  --move-x: 120px;
 }
 
 .logo__diag {
-  --move-x: -10px;
-  --move-y: -10px;
+  --diag-start-y: -6520px;
+  translate: 0 0;
+  transform: translate(0, var(--diag-start-y));
+  animation-name: logo-diag-in;
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.1, 0.86, 0.25, 1);
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
 }
 
 .topbar {
@@ -1112,13 +1122,21 @@ main {
 
 @keyframes logo-part-in {
   from {
-    opacity: 0;
     translate: var(--move-x) var(--move-y);
   }
 
   to {
-    opacity: 1;
     translate: 0 0;
+  }
+}
+
+@keyframes logo-diag-in {
+  from {
+    transform: translate(0, var(--diag-start-y));
+  }
+
+  to {
+    transform: translate(0, 0);
   }
 }
 
@@ -1145,9 +1163,12 @@ main {
 
   .logo__part {
     animation: none;
-    opacity: 1;
     translate: 0 0;
     will-change: auto;
+  }
+
+  .logo__diag {
+    transform: none;
   }
 
   .scroll-artifacts {

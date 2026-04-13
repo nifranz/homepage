@@ -2,29 +2,6 @@
 import { ref } from "vue";
 
 const logoRef = ref(null);
-let isLogoAnimating = false;
-
-const FADE_OUT_DURATION = 230;
-const FADE_IN_DURATION = 280;
-const FADE_IN_START_RATIO = 0.5;
-
-function parseDelay(delayValue) {
-  const parsed = Number.parseFloat(delayValue);
-  return Number.isFinite(parsed) ? parsed : 0;
-}
-
-function getMotionOffset(part) {
-  const styles = window.getComputedStyle(part);
-  const moveX = styles.getPropertyValue("--move-x").trim() || "0px";
-  const moveY = styles.getPropertyValue("--move-y").trim() || "0px";
-  return `${moveX} ${moveY}`;
-}
-
-function waitForAnimations(animations) {
-  return Promise.all(
-    animations.map((animation) => animation.finished.catch(() => undefined)),
-  );
-}
 
 function scrollToTop() {
   const reduceMotion = window.matchMedia(
@@ -37,8 +14,8 @@ function scrollToTop() {
   });
 }
 
-async function replayLogoAnimation() {
-  if (isLogoAnimating || !logoRef.value) {
+function replayLogoAnimation() {
+  if (!logoRef.value) {
     return;
   }
 
@@ -51,55 +28,15 @@ async function replayLogoAnimation() {
     return;
   }
 
-  isLogoAnimating = true;
+  parts.forEach((part) => {
+    part.style.animation = "none";
+  });
 
-  try {
-    const delays = parts.map((part) =>
-      parseDelay(part.style.getPropertyValue("--d")),
-    );
-    const maxDelay = Math.max(...delays, 0);
-    const fadeInPhaseOffset =
-      (maxDelay + FADE_OUT_DURATION) * FADE_IN_START_RATIO;
+  void logoRef.value.getBoundingClientRect();
 
-    const fadeOutAnimations = parts.map((part, index) => {
-      const delay = delays[index];
-      const currentOpacity = Number.parseFloat(
-        window.getComputedStyle(part).opacity,
-      );
-      const fromOpacity = Number.isFinite(currentOpacity) ? currentOpacity : 1;
-
-      return part.animate(
-        [{ opacity: fromOpacity }, { opacity: 0 }],
-        {
-          duration: FADE_OUT_DURATION,
-          delay,
-          easing: "cubic-bezier(0.25, 0.8, 0.2, 1)",
-          fill: "forwards",
-        },
-      );
-    });
-
-    const fadeInAnimations = parts.map((part, index) => {
-      const delay = delays[index] + fadeInPhaseOffset;
-      const motionOffset = getMotionOffset(part);
-      return part.animate(
-        [
-          { opacity: 0, translate: motionOffset },
-          { opacity: 1, translate: "0px 0px" },
-        ],
-        {
-          duration: FADE_IN_DURATION,
-          delay,
-          easing: "cubic-bezier(0.22, 0.78, 0.2, 1)",
-          fill: "forwards",
-        },
-      );
-    });
-
-    await waitForAnimations([...fadeOutAnimations, ...fadeInAnimations]);
-  } finally {
-    isLogoAnimating = false;
-  }
+  parts.forEach((part) => {
+    part.style.animation = "";
+  });
 }
 
 function handleLogoActivate() {
@@ -142,7 +79,7 @@ function handleLogoKeydown(event) {
         />
         <rect
           class="logo__part logo__bar logo__bar-left"
-          style="--d: 70ms"
+          style="--d: 60ms"
           x="27.299999"
           y="31.435329"
           width="4.8695898"
@@ -151,7 +88,7 @@ function handleLogoKeydown(event) {
         />
         <rect
           class="logo__part logo__bar logo__bar-left"
-          style="--d: 140ms"
+          style="--d: 120ms"
           x="33.300003"
           y="42.955498"
           width="5.0145216"
@@ -160,7 +97,7 @@ function handleLogoKeydown(event) {
         />
         <rect
           class="logo__part logo__bar logo__bar-right"
-          style="--d: 420ms"
+          style="--d: 1040ms"
           x="71.925865"
           y="22.706932"
           width="5.0145216"
@@ -169,7 +106,7 @@ function handleLogoKeydown(event) {
         />
         <rect
           class="logo__part logo__bar logo__bar-right"
-          style="--d: 490ms"
+          style="--d: 1100ms"
           x="78.940384"
           y="29.125343"
           width="4.8695898"
@@ -178,37 +115,37 @@ function handleLogoKeydown(event) {
         />
         <path
           class="logo__part logo__bar logo__bar-right"
-          style="--d: 560ms"
+          style="--d: 1160ms"
           d="m 85.615482,36.482238 h 4.86959 V 107.9199 h -4.86959 z"
           fill="#242424"
         />
         <path
-          class="logo__part logo__cross"
-          style="--d: 640ms"
+          class="logo__part logo__cross logo__cross-right"
+          style="--d: 1540ms"
           d="m 71.876296,27.012483 v -4.724658 h 56.423754 v 4.724658 z"
           fill="#000000"
         />
         <path
-          class="logo__part logo__cross"
-          style="--d: 700ms"
+          class="logo__part logo__cross logo__cross-right"
+          style="--d: 1600ms"
           d="m 78.932709,33.866021 v -5.014522 h 42.898311 v 5.014522 z"
           fill="#121212"
         />
         <path
-          class="logo__part logo__cross"
-          style="--d: 760ms"
+          class="logo__part logo__cross logo__cross-right"
+          style="--d: 1660ms"
           d="m 85.559533,40.590239 v -4.724658 h 31.320707 v 4.724658 z"
           fill="#242424"
         />
         <path
-          class="logo__part logo__cross"
-          style="--d: 640ms"
+          class="logo__part logo__cross logo__cross-right"
+          style="--d: 1540ms"
           d="m 79.941018,56.780226 v -4.579727 h 29.026532 v 4.579727 z"
           fill="#121212"
         />
         <rect
-          class="logo__part logo__cross"
-          style="--d: 700ms"
+          class="logo__part logo__cross logo__cross-right"
+          style="--d: 1600ms"
           x="-63.348984"
           y="87.590126"
           width="4.5780244"
@@ -216,25 +153,25 @@ function handleLogoKeydown(event) {
           transform="rotate(-90)"
           fill="#242424"
         />
-        <path
-          class="logo__part logo__diag"
-          style="--d: 210ms"
-          d="M 7.4516576,29.640225 6.2006083,127.85339 11.205017,130.74268 12.72482,32.349983 Z"
-          transform="rotate(-30)"
-          fill="#000000"
-        />
-        <path
-          class="logo__part logo__diag"
-          style="--d: 280ms"
-          d="M 28.774533,22.104594 76.797677,107.7852 h 5.77859 L 34.696105,21.814732 Z"
-          fill="#000000"
-        />
-        <path
-          class="logo__part logo__diag"
-          style="--d: 350ms"
-          d="m 36.592382,22.313478 48.023145,85.680602 h 5.77859 L 42.513954,22.023616 Z"
-          fill="#000000"
-        />
+        <g class="logo__part logo__diag" style="--d: 380ms">
+          <path
+            d="M 7.4516576,29.640225 6.2006083,127.85339 11.205017,130.74268 12.72482,32.349983 Z"
+            transform="rotate(-30)"
+            fill="#000000"
+          />
+        </g>
+        <g class="logo__part logo__diag" style="--d: 440ms">
+          <path
+            d="M 28.774533,22.104594 76.797677,107.7852 h 5.77859 L 34.696105,21.814732 Z"
+            fill="#000000"
+          />
+        </g>
+        <g class="logo__part logo__diag" style="--d: 500ms">
+          <path
+            d="m 36.592382,22.313478 48.023145,85.680602 h 5.77859 L 42.513954,22.023616 Z"
+            fill="#000000"
+          />
+        </g>
       </g>
     </svg>
     <div class="topbar">
