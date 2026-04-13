@@ -1,7 +1,7 @@
 export const name = "Niklas Franz";
 
 export const heroDescription =
-  "a software developer with strong roots in IT administration, systems architecture, DevOps, and secure on-premise infrastructure for research-driven applications.";
+  "a software engineer and infrastructure specialist with strong roots in IT administration, systems architecture, DevOps, and secure on-premise infrastructure for research-driven applications.";
 
 export const coreSkills = [
   {

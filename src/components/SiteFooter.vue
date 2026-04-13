@@ -50,8 +50,7 @@ const currentYear = new Date().getFullYear();
 
     <div class="footer-meta">
       <span>&copy; {{ currentYear }} Niklas Franz</span>
-
-      <span>Portfolio Website</span>
+      <span>Like what you see? Hire me to build your personal portfolio website.</span>
     </div>
   </footer>
 </template>
