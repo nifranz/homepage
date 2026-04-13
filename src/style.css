@@ -375,6 +375,43 @@ body {
   width: auto;
   display: block;
   flex-shrink: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-logo:focus,
+.site-logo:focus-visible,
+.site-logo:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.logo {
+  overflow: visible;
+  shape-rendering: geometricPrecision;
+}
+
+.logo__part {
+  --move-x: 0px;
+  --move-y: 0px;
+  opacity: 0;
+  translate: var(--move-x) var(--move-y);
+  animation: logo-part-in 360ms ease-out forwards;
+  animation-delay: var(--d, 0ms);
+  will-change: opacity, translate;
+}
+
+.logo__bar-left {
+  --move-y: 12px;
+}
+
+.logo__cross {
+  --move-x: 12px;
+}
+
+.logo__diag {
+  --move-x: -10px;
+  --move-y: -10px;
 }
 
 .topbar {
@@ -1073,6 +1110,18 @@ main {
   }
 }
 
+@keyframes logo-part-in {
+  from {
+    opacity: 0;
+    translate: var(--move-x) var(--move-y);
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .wave-emoji.wave-once {
     animation: none;
@@ -1091,6 +1140,13 @@ main {
     opacity: 1;
     transform: none;
     transition: none;
+    will-change: auto;
+  }
+
+  .logo__part {
+    animation: none;
+    opacity: 1;
+    translate: 0 0;
     will-change: auto;
   }
 

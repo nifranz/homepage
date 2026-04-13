@@ -7,7 +7,6 @@ import ProjectsSection from "./components/ProjectsSection.vue";
 import ContactSection from "./components/ContactSection.vue";
 import SiteFooter from "./components/SiteFooter.vue";
 import ScrollArtifacts from "./components/ScrollArtifacts.vue";
-import logoNF from "./img/logo_NF.svg";
 import {
   contactLinks,
   coreSkills,
@@ -24,7 +23,7 @@ import {
   <div class="page-shell">
     <ScrollArtifacts />
     <div class="page-content">
-      <SiteHeader :logo-src="logoNF" />
+      <SiteHeader />
 
       <main>
         <HeroSection :name="name" :description="heroDescription" />
