@@ -79,7 +79,7 @@ function handleLogoKeydown(event) {
         />
         <rect
           class="logo__part logo__bar logo__bar-left"
-          style="--d: 60ms"
+          style="--d: 50ms"
           x="27.299999"
           y="31.435329"
           width="4.8695898"
@@ -88,7 +88,7 @@ function handleLogoKeydown(event) {
         />
         <rect
           class="logo__part logo__bar logo__bar-left"
-          style="--d: 120ms"
+          style="--d: 100ms"
           x="33.300003"
           y="42.955498"
           width="5.0145216"
@@ -97,7 +97,7 @@ function handleLogoKeydown(event) {
         />
         <rect
           class="logo__part logo__bar logo__bar-right"
-          style="--d: 1040ms"
+          style="--d: 300ms"
           x="71.925865"
           y="22.706932"
           width="5.0145216"
@@ -106,7 +106,7 @@ function handleLogoKeydown(event) {
         />
         <rect
           class="logo__part logo__bar logo__bar-right"
-          style="--d: 1100ms"
+          style="--d: 350ms"
           x="78.940384"
           y="29.125343"
           width="4.8695898"
@@ -115,37 +115,37 @@ function handleLogoKeydown(event) {
         />
         <path
           class="logo__part logo__bar logo__bar-right"
-          style="--d: 1160ms"
+          style="--d: 400ms"
           d="m 85.615482,36.482238 h 4.86959 V 107.9199 h -4.86959 z"
           fill="#242424"
         />
         <path
           class="logo__part logo__cross logo__cross-right"
-          style="--d: 1540ms"
+          style="--d: 400ms"
           d="m 71.876296,27.012483 v -4.724658 h 56.423754 v 4.724658 z"
           fill="#000000"
         />
         <path
           class="logo__part logo__cross logo__cross-right"
-          style="--d: 1600ms"
+          style="--d: 450ms"
           d="m 78.932709,33.866021 v -5.014522 h 42.898311 v 5.014522 z"
           fill="#121212"
         />
         <path
           class="logo__part logo__cross logo__cross-right"
-          style="--d: 1660ms"
+          style="--d: 500ms"
           d="m 85.559533,40.590239 v -4.724658 h 31.320707 v 4.724658 z"
           fill="#242424"
         />
         <path
           class="logo__part logo__cross logo__cross-right"
-          style="--d: 1540ms"
+          style="--d: 600ms"
           d="m 79.941018,56.780226 v -4.579727 h 29.026532 v 4.579727 z"
           fill="#121212"
         />
         <rect
           class="logo__part logo__cross logo__cross-right"
-          style="--d: 1600ms"
+          style="--d: 650ms"
           x="-63.348984"
           y="87.590126"
           width="4.5780244"
@@ -153,20 +153,20 @@ function handleLogoKeydown(event) {
           transform="rotate(-90)"
           fill="#242424"
         />
-        <g class="logo__part logo__diag" style="--d: 380ms">
+        <g class="logo__part logo__diag" style="--d: 150ms">
           <path
             d="M 7.4516576,29.640225 6.2006083,127.85339 11.205017,130.74268 12.72482,32.349983 Z"
             transform="rotate(-30)"
             fill="#000000"
           />
         </g>
-        <g class="logo__part logo__diag" style="--d: 440ms">
+        <g class="logo__part logo__diag" style="--d: 200ms">
           <path
             d="M 28.774533,22.104594 76.797677,107.7852 h 5.77859 L 34.696105,21.814732 Z"
-            fill="#000000"
+            fill=""
           />
         </g>
-        <g class="logo__part logo__diag" style="--d: 500ms">
+        <g class="logo__part logo__diag" style="--d: 250ms">
           <path
             d="m 36.592382,22.313478 48.023145,85.680602 h 5.77859 L 42.513954,22.023616 Z"
             fill="#000000"
