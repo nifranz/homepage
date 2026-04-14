@@ -1,6 +1,5 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from "vue";
-import { Icon } from "@iconify/vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 defineProps({
   name: {
@@ -15,9 +14,76 @@ defineProps({
 
 const waveEmojiRef = ref(null);
 const heroRef = ref(null);
+const creditsTypedRef = ref("");
+const creditsText = "< developed with ♥ by @nifranz /> ";
+const heartIndex = creditsText.indexOf("♥");
+const typedBeforeHeart = computed(() => {
+  if (creditsTypedRef.value.length <= heartIndex) {
+    return creditsTypedRef.value;
+  }
+
+  return creditsTypedRef.value.slice(0, heartIndex);
+});
+const showTypedHeart = computed(
+  () => creditsTypedRef.value.length > heartIndex,
+);
+const typedAfterHeart = computed(() => {
+  if (!showTypedHeart.value) {
+    return "";
+  }
+
+  return creditsTypedRef.value.slice(heartIndex + 1);
+});
 let waveObserver;
 let waveWasVisible = false;
 let resizeRafId = null;
+let creditsStartTimeoutId = null;
+let creditsTypeTimeoutId = null;
+
+function getNextCreditsDelay(previousCharacter) {
+  let delay = 55 + Math.floor(Math.random() * 70);
+
+  if (previousCharacter === " ") {
+    delay += 60;
+  }
+
+  if (
+    previousCharacter === "<" ||
+    previousCharacter === ">" ||
+    previousCharacter === "/"
+  ) {
+    delay += 85;
+  }
+
+  if (previousCharacter === "@") {
+    delay += 45;
+  }
+
+  return delay;
+}
+
+function startCreditsTyping() {
+  creditsTypedRef.value = "";
+  let cursor = 0;
+
+  const typeNextCharacter = () => {
+    creditsTypedRef.value += creditsText[cursor];
+    cursor += 1;
+
+    if (cursor >= creditsText.length) {
+      creditsTypeTimeoutId = null;
+      return;
+    }
+
+    const previousCharacter = creditsText[cursor - 1];
+    creditsTypeTimeoutId = window.setTimeout(
+      typeNextCharacter,
+      getNextCreditsDelay(previousCharacter),
+    );
+  };
+
+  creditsTypeTimeoutId = window.setTimeout(typeNextCharacter, 90);
+}
 
 function syncHeroOffset() {
   if (!heroRef.value) {
@@ -44,6 +110,12 @@ function handleResize() {
 onMounted(() => {
   syncHeroOffset();
   window.addEventListener("resize", handleResize);
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    creditsTypedRef.value = creditsText;
+  } else {
+    creditsStartTimeoutId = window.setTimeout(startCreditsTyping, 900);
+  }
 
   if (!waveEmojiRef.value) {
     return;
@@ -73,8 +145,17 @@ onMounted(() => {
 onBeforeUnmount(() => {
   waveObserver?.disconnect();
   window.removeEventListener("resize", handleResize);
+
   if (resizeRafId !== null) {
     cancelAnimationFrame(resizeRafId);
+  }
+
+  if (creditsStartTimeoutId !== null) {
+    clearTimeout(creditsStartTimeoutId);
+  }
+
+  if (creditsTypeTimeoutId !== null) {
+    clearTimeout(creditsTypeTimeoutId);
   }
 });
 </script>
@@ -109,15 +190,12 @@ onBeforeUnmount(() => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        &lt; developed with <span class="heart" aria-hidden="true">♥</span> by
-        <span class="github-link">
-          <Icon
-            class="github-icon"
-            icon="simple-icons:github"
-            aria-hidden="true"
-          />@nifranz
-        </span>
-        / &gt;
+        <span class="credits-typed">{{ typedBeforeHeart }}</span>
+        <span class="heart" :class="{ 'heart-visible': showTypedHeart }"
+          >♥</span
+        >
+        <span class="credits-typed">{{ typedAfterHeart }}</span>
+        <span class="credits-caret" aria-hidden="true">█</span>
       </a>
     </div>
   </section>

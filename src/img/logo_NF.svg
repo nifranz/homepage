@@ -2,12 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="107.02662mm"
-   height="86.868713mm"
-   viewBox="0 0 107.02662 86.868716"
+   width="179.98973mm"
+   height="150.80016mm"
+   viewBox="0 0 179.98973 150.80016"
    version="1.1"
    id="svg1"
-   sodipodi:docname="logo_NF_extra.svg"
+   sodipodi:docname="logo_NF.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -30,16 +31,7 @@
      inkscape:window-x="0"
      inkscape:window-y="33"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer1">
-    <inkscape:page
-       x="0"
-       y="3.8877064e-40"
-       width="107.02662"
-       height="86.868713"
-       id="page2"
-       margin="0"
-       bleed="0" />
-  </sodipodi:namedview>
+     inkscape:current-layer="layer1" />
   <defs
      id="defs1">
     <filter
@@ -81,7 +73,7 @@
   </defs>
   <g
      id="layer1"
-     transform="translate(-21.273437,-21.653497)">
+     transform="translate(-21.273437,-21.909104)">
     <rect
        style="display:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.1"
        id="rect18"
@@ -95,10 +87,7 @@
        width="4.8695898"
        height="86.522209"
        x="21.299999"
-       y="22"
-       inkscape:export-filename="nf_logo_reduced2.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96" />
+       y="22" />
     <rect
        style="fill:#121212;fill-opacity:1;stroke-width:0.12358"
        id="rect4-3"
