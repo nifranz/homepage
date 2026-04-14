@@ -17,14 +17,14 @@ defineProps({
       description="What I've built and operated, from Vue frontends to Linux servers."
     />
 
-    <div class="experience-grid">
-      <article
-        v-for="(skill, index) in skills"
+    <div class="exp-cards">
+      <div
+        class="exp-card"
+        v-for="(skill, i) in skills"
         :key="skill.title"
-        class="experience-card"
-        v-reveal="{ delay: index * 90, direction: 'up' }"
+        v-reveal="{ delay: i * 80, direction: 'up' }"
       >
-        <div class="experience-card-head">
+        <div class="exp-card-head">
           <span class="experience-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
               <path
@@ -40,10 +40,11 @@ defineProps({
           </span>
           <h3>{{ skill.title }}</h3>
         </div>
-        <ul class="experience-card-list">
-          <li v-for="point in skill.points" :key="point">{{ point }}</li>
-        </ul>
-      </article>
+        <p class="exp-card-summary">{{ skill.summary }}</p>
+        <div class="exp-card-tags">
+          <span class="exp-card-tag" v-for="tag in skill.tags" :key="tag">{{ tag }}</span>
+        </div>
+      </div>
     </div>
   </section>
 </template>
