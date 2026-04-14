@@ -10,6 +10,10 @@ defineProps({
     type: String,
     required: true,
   },
+  heroStatus: {
+    type: String,
+    default: "",
+  },
 });
 
 const waveEmojiRef = ref(null);
@@ -178,6 +182,12 @@ onBeforeUnmount(() => {
         {{ name }}<span style="font-size: 70pt; font-weight: lighter">,</span>
       </h1>
       <p class="hero-part hero-part-3">{{ description }}</p>
+      <p v-if="heroStatus" class="hero-status hero-part hero-part-3">{{ heroStatus }}</p>
+      <a
+        class="hero-cv-link hero-part hero-part-3"
+        href="/files/niklas-franz-cv.pdf"
+        download
+      >Download CV</a>
     </div>
     <div class="hero-location" aria-label="Location">
       <span>based in</span>

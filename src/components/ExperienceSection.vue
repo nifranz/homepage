@@ -14,7 +14,7 @@ defineProps({
     <SectionHeader
       index="01"
       title="Experience"
-      description="Hands-on experience across infrastructure, development, and operations - built for real impact."
+      description="What I've built and operated, from Vue frontends to Linux servers."
     />
 
     <div class="experience-grid">

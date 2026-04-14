@@ -26,7 +26,7 @@ const toolRows = computed(() => {
     <SectionHeader
       index="02"
       title="Tools"
-      description="A battle-tested toolkit I use to design, ship, and run dependable software at speed."
+      description="The stack I reach for daily — only things I'd defend in an interview."
     />
 
     <div class="tool-list">

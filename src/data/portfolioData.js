@@ -1,9 +1,22 @@
 export const name = "Niklas Franz";
 
 export const heroDescription =
-  "a business informatics student with strong roots in web development, IT administration, DevOps and secure on-premise infrastructure for content-driven applications.";
+  "a final-year IT student who builds Vue 3 web applications and manages Linux server infrastructure. I take full ownership of assigned projects — from scoping and development to Docker deployment and production.";
+
+export const heroStatus =
+  "Open to full-time roles in web development or DevOps · Berlin & remote";
 
 export const coreSkills = [
+  {
+    title: "Web Development",
+    iconPaths: ["M8 8 4 12l4 4", "m16 8 4 4-4 4", "m14.5 4-5 16"],
+    points: [
+      "Built Vue 3 SPAs with TypeScript and Tailwind CSS, serving ~15 researchers and staff at a university research group.",
+      "Migrated a live audience-interaction platform from a Django-rendered frontend to a Vue.js SPA — sole developer on this project, now serving ~200 weekly users.",
+      "Designed and integrated REST APIs between Vue frontends and Django/Express backends across multiple research tools.",
+      "Developed a Check-In Kiosk and Andon Board 4.0 for an Industry 4.0 learning factory, taking full ownership from spec to deployment.",
+    ],
+  },
   {
     title: "IT Administration",
     iconPaths: [
@@ -13,37 +26,13 @@ export const coreSkills = [
       "m4.5 11 2.3 2.3 4.4-4.4",
     ],
     points: [
-      "Hardware-Beschaffung und Einrichtung von IT-Arbeitsplaetzen (Laptops, KVM, Konferenztechnik).",
-      "Betreuung von Veranstaltungsraum mit PA-Technik und Fotostudio.",
-      "First-Level Support ueber Ticketsystem mit starkem Fokus auf schnellen Self-Support (Layer 0).",
-      "Groupware-Verwaltung (On-Premise HCL Notes, Private-Cloud Filesharing, Nutzer- und Rechteverwaltung, SSO).",
+      "Provisioned and configured workstations, KVM switches, and conference AV equipment for a ~15-person research group.",
+      "Managed first-level support via ticket system with emphasis on documented self-service guides, reducing repeat requests significantly.",
+      "Administered groupware infrastructure including on-premise HCL Notes, Nextcloud file sharing, user access control, and SSO.",
     ],
   },
   {
-    title: "Software Development",
-    iconPaths: ["M8 8 4 12l4 4", "m16 8 4 4-4 4", "m14.5 4-5 16"],
-    points: [
-      "Entwicklung datengetriebener Webanwendungen in Forschungsprojekten.",
-      "Frontend-Modernisierung von Django auf Vue.js in einer Live-Audience-Interaction-Software.",
-      "Entwicklung von Anwendungen wie Check-In-Kiosk und Andon Board 4.0 fuer Lernfabrik-Umgebungen.",
-    ],
-  },
-  {
-    title: "Software Architecture",
-    iconPaths: [
-      "M4 6h6v4H4z",
-      "M14 6h6v4h-6z",
-      "M9 14h6v4H9z",
-      "M10 8h4M17 10v4M7 10v4M12 10v4",
-    ],
-    points: [
-      "Umbau bestehender Backends und Anpassung gewachsener Systemlandschaften in Forschung und Lehre.",
-      "Strukturierung von Services fuer Lehrstuhl und Forschungsprojekte (CRM, Kollaboration, CI/CD, Cloud-Tools).",
-      "Vernetzung von Forschungsdesign, Anwendung und Datenerhebung im End-to-End Betrieb.",
-    ],
-  },
-  {
-    title: "DevOps & Containerization",
+    title: "DevOps & Infrastructure",
     iconPaths: [
       "m7 8-3 4 3 4",
       "m17 16 3-4-3-4",
@@ -52,99 +41,106 @@ export const coreSkills = [
       "M4 15h16v5H4z",
     ],
     points: [
-      "Betrieb von GitLab inklusive CI/CD Pipelines und Runner.",
-      "Containerisierung mit Docker Compose und cloud-nativen Docker-Workflows.",
-      "Anpassung und Weiterentwicklung bestehender DevOps-Architekturen in laufenden Projekten.",
+      "Operated a self-hosted GitLab instance with CI/CD pipelines and runners for internal project deployments.",
+      "Containerized legacy monolithic services with Docker Compose, reducing multi-hour manual deployments to single-command startup.",
+      "Administered on-premise servers — HCL Domino, Nextcloud + OnlyOffice, CRM — covering domains, DNS, TLS certificates, and firewall rules.",
+      "Maintained a data centre with vSphere cluster, SAN, and Veeam backup to tape, plus VLAN segmentation via Ubiquiti.",
     ],
   },
   {
-    title: "Security & Infrastructure",
+    title: "Security & Server Hardening",
     iconPaths: [
       "M12 3 5.5 5v5.8A8.4 8.4 0 0 0 12 21a8.4 8.4 0 0 0-5.5-7.2V8L12 3Z",
       "m8.7 12.4 2.1 2.1 4.5-4.5",
     ],
     points: [
-      "Server-Administration (HCL Domino, Nextcloud + OnlyOffice, CRM, Trello-Klon) inklusive Domains, DNS und Zertifikaten.",
-      "Security-Hardening (Kernel/Pakete aktuell halten, SSH-Zugaenge, Firewall, TLS).",
-      "On-Premise Rechenzentrumsbetrieb mit vSphere-Cluster, SAN, Backups (Veeam, Tape), Strom- und Netzwerkinfrastruktur (VLANs, Ubiquiti).",
+      "Hardened Linux servers by enforcing TLS across all services, locking down SSH access, and maintaining a regular kernel/package update schedule.",
+      "Configured and managed firewalls and VLAN segmentation to isolate services across a multi-tenant research environment.",
+      "Audited and managed SSO and user permission structures to enforce least-privilege access across the research group's tooling.",
     ],
   },
 ];
 
 export const tools = [
-  // web frameworks and languages
+  // Row 1 — core languages & frameworks
   { name: "Vue.js", icon: "vuedotjs", color: "#4FC08D", link: "https://vuejs.org/" },
   { name: "TypeScript", icon: "typescript", color: "#3178C6", link: "https://www.typescriptlang.org/" },
-  { name: "Tailwind CSS", icon: "tailwindcss", color: "#06B6D4", link: "https://tailwindcss.com/" },
-  { name: "shadcn/ui", icon: "shadcnui", color: "#000000", link: "https://ui.shadcn.com/" },
-  { name: "Figma", icon: "figma", color: "#F24E1E", link: "https://www.figma.com/" },
+  { name: "Python", icon: "python", color: "#3776AB", link: "https://www.python.org/" },
   { name: "Django", icon: "django", color: "#092E20", link: "https://www.djangoproject.com/" },
+  { name: "Tailwind CSS", icon: "tailwindcss", color: "#06B6D4", link: "https://tailwindcss.com/" },
   { name: "Express.js", icon: "express", color: "#000000", link: "https://expressjs.com/" },
+  { name: "shadcn/ui", icon: "shadcnui", color: "#000000", link: "https://ui.shadcn.com/" },
+  // Row 2 — infrastructure & DevOps
+  { name: "Linux", icon: "linux", color: "#000000", link: "https://www.kernel.org/" },
+  { name: "Docker", icon: "docker", color: "#2496ED", link: "https://www.docker.com/" },
+  { name: "GitLab CI/CD", icon: "gitlab", color: "#FC6D26", link: "https://docs.gitlab.com/ee/ci/" },
+  { name: "Nextcloud", icon: "nextcloud", color: "#0082C9", link: "https://nextcloud.com/" },
+  { name: "vSphere", icon: "vmware", color: "#607078", link: "https://www.vmware.com/products/cloud-infrastructure/vsphere.html" },
+  { name: "SSL/TLS", icon: "openssl", color: "#721412", link: "https://www.openssl.org/" },
+  { name: "SSO", icon: "keycloak", color: "#4D4D4D", link: "https://www.keycloak.org/" },
+  // Row 3 — databases & secondary tooling
   { name: "React", icon: "react", color: "#61DAFB", link: "https://react.dev/" },
   { name: "PHP", icon: "php", color: "#777BB4", link: "https://www.php.net/" },
   { name: "Sequelize", icon: "sequelize", color: "#52B0E7", link: "https://sequelize.org/" },
-  // infrastrcture and architecture 
-  { name: "Linux", icon: "linux", color: "#000000", link: "https://www.kernel.org/" },
-  { name: "macOS", icon: "apple", color: "#000000", link: "https://www.apple.com/macos/" },
-  { name: "Docker", icon: "docker", color: "#2496ED", link: "https://www.docker.com/" },
-  { name: "GitLab CI/CD", icon: "gitlab", color: "#FC6D26", link: "https://docs.gitlab.com/ee/ci/" },
-  { name: "vSphere", icon: "vmware", color: "#607078", link: "https://www.vmware.com/products/cloud-infrastructure/vsphere.html" },
-  // other languages and frameworks
-  { name: "Python", icon: "python", color: "#3776AB", link: "https://www.python.org/" },
-  { name: "R", icon: "r", color: "#276DC3", link: "https://www.r-project.org/" },
-  { name: "C#", icon: "csharp", color: "#512BD4", link: "https://dotnet.microsoft.com/en-us/languages/csharp" },
-  { name: "Unity", icon: "unity", color: "#000000", link: "https://unity.com/" },
-  { name: "AR/VR", icon: "meta", color: "#0467DF", link: "https://www.meta.com/quest/quest-3/" },
-  // groupware
+  { name: "Figma", icon: "figma", color: "#F24E1E", link: "https://www.figma.com/" },
   { name: "M365", icon: "microsoftoffice", color: "#D83B01", link: "https://www.microsoft.com/microsoft-365" },
   { name: "HCL Notes", icon: "hcl", color: "#0066B3", link: "https://www.hcl-software.com/notes" },
-  { name: "Nextcloud", icon: "nextcloud", color: "#0082C9", link: "https://nextcloud.com/" },
-  { name: "OnlyOffice", icon: "onlyoffice", color: "#444444", link: "https://www.onlyoffice.com/" },
-  // network stack
-  { name: "SSL/TLS", icon: "openssl", color: "#721412", link: "https://www.openssl.org/" },
-  // { name: "Firewall", icon: "fortinet", color: "#EE3124" },
-  { name: "DNS", icon: "nextdns", color: "#007BFF", link: "https://nextdns.io/" },
-  { name: "SSO", icon: "keycloak", color: "#4D4D4D", link: "https://www.keycloak.org/" },
+  { name: "macOS", icon: "apple", color: "#000000", link: "https://www.apple.com/macos/" },
 ];
 
 export const projects = [
   {
-    title: "Bachelorthesis ",
-    date: "2023/2024",
-    place: "Webentwicklung und Experimentdesign",
+    title: "Bachelor's Thesis Research Tool",
+    date: "2023 – 2024",
+    place: "Web Development & Experiment Design",
     logoPaths: ["M12 3v18", "M7 8h10", "M7 16h10", "M5 12h14"],
     description:
-      "Entwicklung eines Forschungsinstruments zur Untersuchung von KI-Transparenz und Autonomie auf Vertrauen und Frustration in einer Industrie-4.0-Prozesssimulation als Webapp. Forschungsdesign, Entwicklung, Docker-Deployment und SSL-Security lagen vollstaendig in meiner Verantwortung.",
+      "Researchers needed a controlled digital environment to study how AI transparency and autonomy affect user trust in Industry 4.0 workflows. I built a Vue 3 web application that simulated an industrial process, collected behavioral and survey data in real time, and exposed a REST API for results export — deployed via Docker with TLS. I was the sole developer on this project, with full responsibility for research instrument design, frontend and backend development, and production deployment.",
     tags: [
-      "Research Design",
-      "Web Development",
+      "Vue 3",
+      "REST API",
       "Docker",
       "SSL/TLS",
+      "Research Design",
       "Data Collection",
-      "System Architecture",
     ],
   },
   {
-    title: "Hörsaal Quiz App",
-    date: "seit 2024",
-    place: "Webentwicklung",
+    title: "Live Audience Interaction Platform",
+    date: "2024 – present",
+    place: "Web Development & DevOps",
     logoPaths: ["M4 5h16v14H4z", "M8 9h8", "M8 13h8", "M12 5v14"],
     description:
-      "Transformation und Neuaufbau einer Live-Audience-Interaction-Software mit Modernisierung von Django-Frontend auf Vue.js und Umbau der bestehenden Backend-Infrastruktur. Ich habe sowohl Entwicklung als auch DevOps verantwortet.",
+      "An existing Django-based lecture tool had a tightly coupled, hard-to-maintain frontend that blocked further feature development. I replaced the Django-rendered frontend with a Vue.js SPA backed by the existing Python API, and refactored the backend infrastructure to support the new architecture. I was the sole developer on this project, responsible for both the frontend migration and DevOps — the platform now serves ~200 weekly users across active lectures.",
     tags: [
-      "Vue.js",
+      "Vue 3",
       "Django",
+      "TypeScript",
       "Frontend Migration",
-      "Backend Refactoring",
+      "REST API",
       "DevOps",
-      "Team Lead",
     ],
   },
-
   {
-    title: "Praktikum im Human Augmented Learning Lab",
-    date: "2024/2025",
-    place: "VR / AR Anwendungsentwicklung und Lehre",
+    title: "Industry 4.0 Lab Applications",
+    date: "2025 – present",
+    place: "Industrial Transformation Lab",
+    logoPaths: ["M4 18h16", "M7 18V8l5-4 5 4v10", "M10 12h4", "M10 15h4"],
+    description:
+      "The lab's production simulation environment ran on legacy monolithic services that were slow to deploy and difficult to update. I developed an Andon Board 4.0 and a Check-In Kiosk application for the learning factory, and migrated the underlying services from a monolith to Docker-based containers. I had full ownership of this project — application development, containerization, and DevOps architecture updates.",
+    tags: [
+      "Vue 3",
+      "Docker",
+      "Docker Compose",
+      "DevOps Architecture",
+      "REST API",
+      "Industry 4.0",
+    ],
+  },
+  {
+    title: "XR Application Development & Teaching",
+    date: "2024 – 2025",
+    place: "Human Augmented Learning Lab",
     logoPaths: [
       "M3.5 11.5C3.5 8 7 5.5 12 5.5s8.5 2.5 8.5 6c0 3.5-3.5 6-8.5 6s-8.5-2.5-8.5-6Z",
       "M7 11.5h2.5",
@@ -152,7 +148,7 @@ export const projects = [
       "M10 11.5h4",
     ],
     description:
-      "Konzipierung und Durchfuehrung einer Lehrveranstaltung sowie Entwicklung von AR/VR-Applikationen fuer Apple Vision Pro, Meta Quest 3 und Microsoft HoloLens 2. Zusaetzlich habe ich einen Digital Twin der Lernfabrik gestaltet und umgesetzt.",
+      "The lab needed practical XR course content and working application demos for three different headset platforms. I designed and delivered a university-level XR development course, built AR/VR applications for Apple Vision Pro, Meta Quest 3, and HoloLens 2, and created a digital twin of the research group's learning factory. Delivered independently as part of a supervised internship within the lab team.",
     tags: [
       "AR/VR",
       "Apple Vision Pro",
@@ -163,19 +159,17 @@ export const projects = [
     ],
   },
   {
-    title: "Industrielle Anwendungsentwicklung und Architekturmigration",
-    date: "seit 2025",
-    place: "Industrial Transformation Lab",
-    logoPaths: ["M4 18h16", "M7 18V8l5-4 5 4v10", "M10 12h4", "M10 15h4"],
+    title: "Personal Portfolio",
+    date: "2025",
+    place: null,
+    logoPaths: ["M4 6h16", "M4 12h16", "M4 18h16"],
     description:
-      "Simulation und Untersuchung von Produktionsprozessen in einem Industrie-4.0-Lernfabrik-Labor mit Entwicklung eines Andon Boards 4.0 und einer Check-In-Kiosk-Anwendung. Monolithische Services wurden in cloud-native Docker-Container ueberfuehrt und die DevOps-Architektur angepasst.",
+      "Most portfolio templates look generic and say nothing specific about the person behind them. I built this site from scratch with Vue 3, scroll-driven animations, a custom typed-text effect, and content structured to communicate both frontend and infrastructure depth. Sole developer and designer — built and deployed independently as an open-source project on GitHub.",
     tags: [
-      "Industry 4.0",
-      "Docker",
-      "Microservices",
-      "DevOps Architecture",
-      "Infrastructure Admin",
-      "Kiosk App",
+      "Vue 3",
+      "TypeScript",
+      "CSS Animations",
+      "Open Source",
     ],
   },
 ];
@@ -183,24 +177,24 @@ export const projects = [
 export const contactLinks = [
   {
     label: "Email",
-    title: "Drop me a line",
-    description: "hello@niklasfranz.de",
+    title: "Best way to reach me",
+    description: "Best way to reach me for opportunities or project enquiries.",
     icon: "gmail",
     href: "mailto:hello@niklasfranz.de?subject=Hello%20Niklas",
     color: "#EA4335",
   },
   {
     label: "LinkedIn",
-    title: "Let us connect",
-    description: "Professional profile and networking",
+    title: "Professional background",
+    description: "Work history, skills, and professional background.",
     icon: "linkedin",
     color: "#0A66C2",
     href: "https://www.linkedin.com/in/your-profile",
   },
   {
     label: "GitHub",
-    title: "See my repositories",
-    description: "Code, experiments, and project history",
+    title: "Code & open-source work",
+    description: "Open-source projects and code samples, including this portfolio.",
     icon: "github",
     color: "#181717",
     href: "https://github.com/nifranz",
@@ -210,15 +204,15 @@ export const contactLinks = [
 export const footerLegalLinks = [
   {
     label: "Imprint",
-    href: "mailto:your.email@example.com?subject=Imprint%20Request",
+    href: "mailto:hello@niklasfranz.de?subject=Imprint%20Request",
   },
   {
     label: "Privacy",
-    href: "mailto:your.email@example.com?subject=Privacy%20Request",
+    href: "mailto:hello@niklasfranz.de?subject=Privacy%20Request",
   },
   {
     label: "Legal Inquiries",
-    href: "mailto:your.email@example.com?subject=Legal%20Inquiry",
+    href: "mailto:hello@niklasfranz.de?subject=Legal%20Inquiry",
   },
 ];
 

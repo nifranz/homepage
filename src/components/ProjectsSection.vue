@@ -14,7 +14,7 @@ defineProps({
     <SectionHeader
       index="03"
       title="Projects"
-      description="From research prototypes to production-ready systems - every project pushes ideas into reality."
+      description="Real problems I was given full ownership to solve."
     />
 
     <div class="project-timeline">

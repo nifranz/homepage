@@ -13,6 +13,7 @@ import {
   footerLegalLinks,
   footerSitemapLinks,
   heroDescription,
+  heroStatus,
   name,
   projects,
   tools,
@@ -26,7 +27,7 @@ import {
       <SiteHeader />
 
       <main>
-        <HeroSection :name="name" :description="heroDescription" />
+        <HeroSection :name="name" :description="heroDescription" :hero-status="heroStatus" />
         <ExperienceSection :skills="coreSkills" />
         <ToolsSection :tools="tools" />
         <ProjectsSection :projects="projects" />

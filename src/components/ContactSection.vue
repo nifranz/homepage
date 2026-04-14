@@ -20,7 +20,7 @@ function isExternalLink(href) {
     <SectionHeader
       index="04"
       title="Get In Touch"
-      description="Got an idea, project, or role in mind? Let’s connect and build something meaningful."
+      description="Looking for a developer who owns the full picture? Let’s talk."
     />
 
     <div class="contact-layout">
