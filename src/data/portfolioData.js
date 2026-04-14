@@ -1,7 +1,7 @@
 export const name = "Niklas Franz";
 
 export const heroDescription =
-  "a software engineer and infrastructure specialist with strong roots in IT administration, systems architecture, DevOps, and secure on-premise infrastructure for research-driven applications.";
+  "a business informatics student with strong roots in web development, IT administration, DevOps and secure on-premise infrastructure for content-driven applications.";
 
 export const coreSkills = [
   {
@@ -109,7 +109,9 @@ export const tools = [
 
 export const projects = [
   {
-    title: "Bachelorarbeit",
+    title: "Bachelorthesis ",
+    date: "2023/2024",
+    place: "Webentwicklung und Experimentdesign",
     logoPaths: ["M12 3v18", "M7 8h10", "M7 16h10", "M5 12h14"],
     description:
       "Entwicklung eines Forschungsinstruments zur Untersuchung von KI-Transparenz und Autonomie auf Vertrauen und Frustration in einer Industrie-4.0-Prozesssimulation als Webapp. Forschungsdesign, Entwicklung, Docker-Deployment und SSL-Security lagen vollstaendig in meiner Verantwortung.",
@@ -123,7 +125,9 @@ export const projects = [
     ],
   },
   {
-    title: "HQA - Forschungsgruppe Wissen, Lernen, Weiterbildung",
+    title: "Hörsaal Quiz App",
+    date: "seit 2024",
+    place: "Webentwicklung",
     logoPaths: ["M4 5h16v14H4z", "M8 9h8", "M8 13h8", "M12 5v14"],
     description:
       "Transformation und Neuaufbau einer Live-Audience-Interaction-Software mit Modernisierung von Django-Frontend auf Vue.js und Umbau der bestehenden Backend-Infrastruktur. Ich habe sowohl Entwicklung als auch DevOps verantwortet.",
@@ -136,22 +140,11 @@ export const projects = [
       "Team Lead",
     ],
   },
+
   {
-    title: "Industrial Transformation Lab",
-    logoPaths: ["M4 18h16", "M7 18V8l5-4 5 4v10", "M10 12h4", "M10 15h4"],
-    description:
-      "Simulation und Untersuchung von Produktionsprozessen in einem Industrie-4.0-Lernfabrik-Labor mit Entwicklung eines Andon Boards 4.0 und einer Check-In-Kiosk-Anwendung. Monolithische Services wurden in cloud-native Docker-Container ueberfuehrt und die DevOps-Architektur angepasst.",
-    tags: [
-      "Industry 4.0",
-      "Docker",
-      "Microservices",
-      "DevOps Architecture",
-      "Infrastructure Admin",
-      "Kiosk App",
-    ],
-  },
-  {
-    title: "Praktikum im Human Augmented Learning Lab (HALL)",
+    title: "Praktikum im Human Augmented Learning Lab",
+    date: "2024/2025",
+    place: "VR / AR Anwendungsentwicklung und Lehre",
     logoPaths: [
       "M3.5 11.5C3.5 8 7 5.5 12 5.5s8.5 2.5 8.5 6c0 3.5-3.5 6-8.5 6s-8.5-2.5-8.5-6Z",
       "M7 11.5h2.5",
@@ -167,6 +160,22 @@ export const projects = [
       "HoloLens 2",
       "Digital Twin",
       "Education",
+    ],
+  },
+  {
+    title: "Industrielle Anwendungsentwicklung und Architekturmigration",
+    date: "seit 2025",
+    place: "Industrial Transformation Lab",
+    logoPaths: ["M4 18h16", "M7 18V8l5-4 5 4v10", "M10 12h4", "M10 15h4"],
+    description:
+      "Simulation und Untersuchung von Produktionsprozessen in einem Industrie-4.0-Lernfabrik-Labor mit Entwicklung eines Andon Boards 4.0 und einer Check-In-Kiosk-Anwendung. Monolithische Services wurden in cloud-native Docker-Container ueberfuehrt und die DevOps-Architektur angepasst.",
+    tags: [
+      "Industry 4.0",
+      "Docker",
+      "Microservices",
+      "DevOps Architecture",
+      "Infrastructure Admin",
+      "Kiosk App",
     ],
   },
 ];
@@ -215,7 +224,7 @@ export const footerLegalLinks = [
 
 export const footerSitemapLinks = [
   { label: "Home", href: "#hero" },
-  { label: "Expertise", href: "#expertise" },
+  { label: "Experience", href: "#expertise" },
   { label: "Tools", href: "#tools" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },

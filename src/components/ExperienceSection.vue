@@ -13,8 +13,8 @@ defineProps({
   <section class="section" id="expertise">
     <SectionHeader
       index="01"
-      title="Expertise"
-      description="Hands-on expertise across infrastructure, development, and operations - built for real impact."
+      title="Experience"
+      description="Hands-on experience across infrastructure, development, and operations - built for real impact."
     />
 
     <div class="experience-grid">

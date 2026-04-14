@@ -799,6 +799,28 @@ main {
   min-height: 100%;
 }
 
+.project-heading {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.project-date {
+  margin: 0;
+  font-family: var(--typewriter);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.project-place {
+  margin: 0;
+  font-family: var(--typewriter);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
 .project-content-pane {
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--bg-soft), transparent 12%);
@@ -812,9 +834,17 @@ main {
   justify-content: flex-end;
 }
 
+.project-row:not(.flipped) .project-heading {
+  text-align: right;
+}
+
 .project-row.flipped .project-title-pane {
   order: 2;
   justify-content: flex-start;
+}
+
+.project-row.flipped .project-heading {
+  text-align: left;
 }
 
 .project-row.flipped .project-content-pane {

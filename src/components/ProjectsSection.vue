@@ -42,7 +42,11 @@ defineProps({
               />
             </svg>
           </span>
-          <h3>{{ project.title }}</h3>
+          <div class="project-heading">
+            <p class="project-date">{{ project.date }}</p>
+            <h3>{{ project.title }}</h3>
+            <p v-if="project.place" class="project-place">{{ project.place }}</p>
+          </div>
         </div>
         <div class="project-content-pane">
           <p>{{ project.description }}</p>
