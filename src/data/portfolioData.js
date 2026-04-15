@@ -10,7 +10,7 @@ export const coreSkills = [
   {
     title: "Web Development",
     iconPaths: ["M8 8 4 12l4 4", "m16 8 4 4-4 4", "m14.5 4-5 16"],
-    summary: "Building Vue 3 SPAs and REST APIs — from research tools to production platforms serving hundreds of weekly users.",
+    summary: "Building Vue 3 SPAs and REST APIs — from research tools to production platforms serving hundreds of weekly users. Full ownership across all projects, including leading trainees on select engagements.",
     tags: ["Vue 3", "TypeScript", "REST API", "Django"],
   },
   {
@@ -21,7 +21,7 @@ export const coreSkills = [
       "M12 16v4",
       "m4.5 11 2.3 2.3 4.4-4.4",
     ],
-    summary: "Provisioning, supporting, and maintaining infrastructure and groupware for a ~25-person university research group.",
+    summary: "Leading a 2–3 person IT team — provisioning, supporting, and maintaining infrastructure and groupware for a ~25-person university research group.",
     tags: ["Helpdesk", "Nextcloud", "SSO", "HCL Notes"],
   },
   {
@@ -110,28 +110,6 @@ export const projects = [
     ],
   },
   {
-    title: "Industry 4.0 Lab Applications",
-    date: "2025 – present",
-    place: "Industrial Transformation Lab",
-    logoPaths: ["M4 18h16", "M7 18V8l5-4 5 4v10", "M10 12h4", "M10 15h4"],
-    links: [
-      { label: "Lab Homepage", href: "https://lswi.de/industrial-transformation-lab" },
-    ],
-    shortDescription: "Containerized a legacy learning factory environment and built an Andon Board 4.0 with Vue and Node-RED — full ownership from architecture to deployment.",
-    description: [
-      "The lab's production simulation environment ran on legacy monolithic services that were slow to deploy and difficult to update. I migrated the underlying services from a monolith to Docker-based containers, including the migration of the DNS and many IoT and Industry 4.0 clients. The learning factory also needed a way to communicate the current progress of the simulation process, therefore I developed an Andon Board 4.0 using Vue and NodeRED. I had full ownership of these projects — application development, system architecture, containerization, and DevOps architecture updates.",
-      "Beyond my own scope, I mentored junior developers integrating new features and components into the existing architecture — reviewing their work and helping them navigate the codebase independently.",
-    ],
-    tags: [
-      "Vue 3",
-      "Docker",
-      "NodeRED",
-      "DevOps Architecture",
-      "REST API",
-      "Industry 4.0",
-    ],
-  },
-  {
     title: "XR Application Development & Teaching",
     date: "2024 – 2025",
     place: "Human Augmented Learning Lab",
@@ -152,6 +130,28 @@ export const projects = [
       "HoloLens 2",
       "Digital Twin",
       "Education",
+    ],
+  },
+  {
+    title: "Industry 4.0 Lab Applications",
+    date: "2025 – present",
+    place: "Industrial Transformation Lab",
+    logoPaths: ["M4 18h16", "M7 18V8l5-4 5 4v10", "M10 12h4", "M10 15h4"],
+    links: [
+      { label: "Lab Homepage", href: "https://lswi.de/industrial-transformation-lab" },
+    ],
+    shortDescription: "Containerized a legacy learning factory environment and built an Andon Board 4.0 with Vue and Node-RED — full ownership from architecture to deployment.",
+    description: [
+      "The lab's production simulation environment ran on legacy monolithic services that were slow to deploy and difficult to update. I migrated the underlying services from a monolith to Docker-based containers, including the migration of the DNS and many IoT and Industry 4.0 clients. The learning factory also needed a way to communicate the current progress of the simulation process, therefore I developed an Andon Board 4.0 using Vue and NodeRED. I had full ownership of these projects — application development, system architecture, containerization, and DevOps architecture updates.",
+      "Beyond my own scope, I mentored junior developers integrating new features and components into the existing architecture — reviewing their work and helping them navigate the codebase independently.",
+    ],
+    tags: [
+      "Vue 3",
+      "Docker",
+      "NodeRED",
+      "DevOps Architecture",
+      "REST API",
+      "Industry 4.0",
     ],
   },
   {
