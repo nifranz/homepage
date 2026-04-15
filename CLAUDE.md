@@ -3,7 +3,16 @@
 ## Meta instructions for LLMs
 
 - **After every series of changes** (i.e. after completing work on a user prompt), ask the user: "Should I create a git commit for these changes?" and suggest a fitting commit message.
-- **If you modify core architecture or design** (component structure, CSS design tokens, data shape, animation system, layout patterns, or section organisation), update the relevant section of this file to reflect the change before reporting the task as done.
+- **SELF-UPDATE REQUIREMENT — read carefully:** Any change to core architecture or design **must** be reflected in this file before you report the task as done. "Core architecture or design" means any of:
+  - Component structure (adding, removing, or renaming `.vue` files or splitting/merging components)
+  - CSS design tokens (adding, renaming, or changing values of `--*` custom properties in `:root`)
+  - Data shape (adding, removing, or renaming fields in any `portfolioData.js` export)
+  - Animation system (changing the `v-reveal` directive API, CSS reveal classes, or JS transition hooks)
+  - Layout patterns (changing grid structure, breakpoints, or the `.section` / `.page-shell` / `.page-content` wrappers)
+  - Section organisation (adding, removing, or reordering page sections)
+  - New exports in `portfolioData.js` (must also update the data table in this file)
+
+  Treat this file as the living spec. If you change the code, update the spec. If you update the spec without changing the code, that's a bug.
 
 ---
 
@@ -74,6 +83,14 @@ All user-facing content lives here. Components are purely presentational — **n
 | `footerLegalLinks` | `{ label, href }[]` | SiteFooter |
 | `footerSitemapLinks` | `{ label, href }[]` | SiteFooter |
 
+### Field notes
+
+**`projects[].description`** — may be a plain `string` (single paragraph) or an `Array<string>` (multiple paragraphs rendered separately). ProjectsSection handles both.
+
+**`projects[].place`** — nullable. Omit the subtitle row in the title pane when `null`.
+
+**`projects[].logoPaths`** — raw SVG path `d` strings, drawn directly in a 24×24 viewBox the same way as `coreSkills[].iconPaths`.
+
 ### Icon usage
 
 `coreSkills[].iconPaths` — raw SVG path `d` strings (drawn directly via `<path>`):
@@ -108,7 +125,18 @@ Each link object: `{ label, href, download? }`. If `download` is set to a filena
 --line: #d8ccb9        /* borders and dividers */
 --accent: #9f6535      /* primary brand colour, warm brown */
 --typewriter: 'Courier Prime', monospace
+
+/* Scroll-synced — set by HeroSection JS, consumed by ScrollArtifacts */
+--scroll-y: 0px        /* raw scroll offset in px */
+--scroll-progress: 0   /* 0–1 fraction of page scrolled */
+--scroll-velocity: 0   /* instantaneous scroll speed, used for parallax tilt */
 ```
+
+All custom properties are declared in `:root` inside `src/style.css`. Never add new ones elsewhere.
+
+### Background
+
+`body` carries a layered `radial-gradient` background (two warm radial blobs over `var(--bg)`). Do not replicate this gradient on child elements — it is intentionally set once at the page root.
 
 ### Typography
 - **Headings** — Outfit (500/700/800)
@@ -127,8 +155,41 @@ Each link object: `{ label, href, download? }`. If `download` is set to a filena
 
 ## Component architecture
 
+### Page shell
+
+`App.vue` renders:
+```
+<div class="page-shell">
+  <ScrollArtifacts />          <!-- fixed, z-index 0, pointer-events none -->
+  <div class="page-content">   <!-- z-index 2, sits above artifacts -->
+    <SiteHeader />
+    <HeroSection />
+    <ExperienceSection />
+    <ToolsSection />
+    <ProjectsSection />
+    <ContactSection />
+    <SiteFooter />
+  </div>
+</div>
+```
+
+`ScrollArtifacts` is `position: fixed; inset: 0` — it never scrolls with content. Do not add more fixed/sticky layers without considering z-index stacking against `page-content`.
+
+### SectionHeader
+
+Reusable component accepting three props: `index` (string, e.g. `"01"`), `title` (string), `description` (string). Renders a small index label, heading, and muted description line. Used at the top of every section.
+
+Section anchor IDs are set on the `<section>` element in each component:
+| Section | ID |
+|---|---|
+| HeroSection | `#hero` |
+| ExperienceSection | `#expertise` |
+| ToolsSection | `#tools` |
+| ProjectsSection | `#projects` |
+| ContactSection | `#contact` |
+
 ### HeroSection
-Typed animation for credits text, wave emoji intersection observer, scroll offset CSS variable sync. No content props beyond `name`, `description`.
+Typed animation for credits text, wave emoji intersection observer, scroll offset CSS variable sync (`--scroll-y`, `--scroll-progress`, `--scroll-velocity` on `:root`). No content props beyond `name`, `description`.
 
 ### ExperienceSection
 Three-column card grid from `coreSkills`. Cards show icon + title + summary + accent tags. Staggered `v-reveal` on each card.
@@ -137,10 +198,22 @@ Three-column card grid from `coreSkills`. Cards show icon + title + summary + ac
 Groups `tools` by `category` computed from the flat array. Each category renders a label (absolutely positioned, left edge) + a centered wrapping pill row. Labels and pills animate left-to-right with staggered delays.
 
 ### ProjectsSection
-Alternating two-column timeline layout (odd rows flipped). Each row: title pane (left/right) + content card (right/left). Content card shows `shortDescription` always; full `description` expands via a JS-hooked `<Transition>` animating `max-height` + `opacity`. Read more / Read less button is primary style; external links are secondary style.
+Alternating two-column timeline layout (odd rows flipped). Each row: title pane (left/right) + content card (right/left). Content card shows `shortDescription` always; full `description` expands via a JS-hooked `<Transition>` animating `max-height` + `opacity`. The transition hooks (`onBeforeEnter`, `onEnter`, `onLeave`) measure `scrollHeight` at runtime — do not use CSS-only `max-height` transitions here. Read more / Read less button is primary style; external links are secondary style.
+
+### ScrollArtifacts
+Decorative layer. Renders a grain texture and a micro-sphere element that parallax-tracks via `--scroll-y` / `--scroll-progress` / `--scroll-velocity`. Lives outside `page-content`; never receives pointer events.
 
 ### v-reveal directive
-Adds `.reveal` + `.reveal-from-{direction}` classes. Triggers `.is-visible` via IntersectionObserver. Supports directions: `up`, `down`, `left`, `right`. Options: `delay` (ms), `once` (boolean), `threshold`, `rootMargin`.
+Adds `.reveal` + `.reveal-from-{direction}` classes. Triggers `.is-visible` via `IntersectionObserver`. Supports directions: `up`, `down`, `left`, `right`. Options: `delay` (ms), `once` (boolean), `threshold`, `rootMargin`.
+
+**Scroll-direction-aware reverse:** when `once: false` (default), the directive removes `.is-visible` only when the element exits below the viewport while the user is scrolling up. Elements that exit above the viewport (scrolled past) retain `.is-visible` and do not re-animate on the way back down. This prevents flash-of-hidden-content when scrolling normally.
+
+**Default options:**
+```js
+{ direction: "down", delay: 0, once: false, threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+```
+
+Binding shorthand: `v-reveal="'left'"` sets direction only. Full object: `v-reveal="{ direction: 'up', delay: 150, once: true }"`.
 
 ---
 
@@ -167,3 +240,4 @@ Adds `.reveal` + `.reveal-from-{direction}` classes. Triggers `.is-visible` via 
 - Do not hardcode copy in components — all content goes in `portfolioData.js`
 - Do not introduce new breakpoints other than `700px`
 - Do not add new data exports to `portfolioData.js` without updating the table in this file
+- **Update this file whenever you change core architecture or design** (see Meta instructions)
