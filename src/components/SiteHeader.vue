@@ -2,6 +2,7 @@
 import { ref } from "vue";
 
 const logoRef = ref(null);
+const menuOpen = ref(false);
 
 function scrollToTop() {
   const reduceMotion = window.matchMedia(
@@ -53,7 +54,7 @@ function handleLogoKeydown(event) {
 </script>
 
 <template>
-  <header class="site-header">
+  <header class="site-header" :class="{ 'site-header--open': menuOpen }">
     <svg
       ref="logoRef"
       class="site-logo logo logo--build"
@@ -174,13 +175,25 @@ function handleLogoKeydown(event) {
         </g>
       </g>
     </svg>
-    <div class="topbar">
+    <button
+      class="site-hamburger"
+      :aria-expanded="menuOpen"
+      aria-label="Toggle navigation"
+      @click="menuOpen = !menuOpen"
+    >
+      <svg viewBox="0 0 24 24" fill="none" width="20" height="20" aria-hidden="true">
+        <path v-if="!menuOpen" d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path v-else d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="topbar" :class="{ 'topbar--open': menuOpen }">
       <nav>
-        <a href="#hero">Home</a>
-        <a href="#expertise">Experience</a>
-        <a href="#tools">Tools</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#hero" @click="menuOpen = false">Home</a>
+        <a href="#expertise" @click="menuOpen = false">Experience</a>
+        <a href="#tools" @click="menuOpen = false">Tools</a>
+        <a href="#projects" @click="menuOpen = false">Projects</a>
+        <a href="#contact" @click="menuOpen = false">Contact</a>
       </nav>
     </div>
   </header>
