@@ -1408,8 +1408,8 @@ main {
 
 @media (max-width: 700px) {
   .hero {
-    min-height: unset;
-    height: auto;
+    min-height: var(--hero-mobile-height);
+    height: var(--hero-mobile-height);
   }
 
   .site-header {
