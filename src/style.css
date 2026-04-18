@@ -1439,6 +1439,10 @@ main {
     z-index: -1;
   }
 
+  .site-header--open::before {
+    border-bottom: none;
+  }
+
   .site-logo {
     height: 2.9rem;
   }
@@ -1478,6 +1482,10 @@ main {
     visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
+  }
+
+  .topbar a {
+    font-size: 2rem;
   }
 
   .topbar nav {

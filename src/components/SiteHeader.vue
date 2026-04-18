@@ -189,7 +189,7 @@ function handleLogoKeydown(event) {
 
     <div class="topbar" :class="{ 'topbar--open': menuOpen }">
       <nav>
-        <a href="#hero" @click="menuOpen = false">Home</a>
+        <a href="#" @click.prevent="() => { scrollToTop(); menuOpen = false; }">Home</a>
         <a href="#expertise" @click="menuOpen = false">Experience</a>
         <a href="#tools" @click="menuOpen = false">Tools</a>
         <a href="#projects" @click="menuOpen = false">Projects</a>

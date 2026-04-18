@@ -149,7 +149,7 @@ All custom properties are declared in `:root` inside `src/style.css`. Never add 
 - Cards use `border: 1px solid var(--line)` with `border-top: 2px solid var(--accent)`
 - Pills/tags use `border-radius: 999px`
 - Colour mixing via `color-mix(in srgb, ...)` — no hardcoded one-off colours
-- Single responsive breakpoint: `@media (max-width: 700px)`
+- Two responsive breakpoints: `@media (max-width: 860px)` (project section collapses to single column) and `@media (max-width: 700px)` (full mobile layout)
 
 ---
 
@@ -238,6 +238,6 @@ Binding shorthand: `v-reveal="'left'"` sets direction only. Full object: `v-reve
 - No new CSS custom properties outside `src/style.css` `:root`
 - No utility CSS frameworks (Tailwind etc.) — vanilla CSS only
 - Do not hardcode copy in components — all content goes in `portfolioData.js`
-- Do not introduce new breakpoints other than `700px`
+- Do not introduce new breakpoints other than `860px` and `700px`
 - Do not add new data exports to `portfolioData.js` without updating the table in this file
 - **Update this file whenever you change core architecture or design** (see Meta instructions)
