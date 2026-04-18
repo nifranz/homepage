@@ -1412,8 +1412,8 @@ main {
   }
 
   .hero {
-    min-height: var(--hero-mobile-height);
-    height: var(--hero-mobile-height);
+    min-height: unset;
+    height: auto;
   }
 
   .site-header {

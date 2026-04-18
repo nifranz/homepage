@@ -100,11 +100,6 @@ function syncHeroOffset() {
   );
 }
 
-function setMobileHeroHeight() {
-  if (!heroRef.value) return;
-  const height = window.innerHeight - heroRef.value.offsetTop;
-  heroRef.value.style.setProperty("--hero-mobile-height", `${height}px`);
-}
 
 function handleResize() {
   if (resizeRafId !== null) {
@@ -119,7 +114,6 @@ function handleResize() {
 
 onMounted(() => {
   syncHeroOffset();
-  setMobileHeroHeight();
   window.addEventListener("resize", handleResize);
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
