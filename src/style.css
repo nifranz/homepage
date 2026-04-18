@@ -1416,6 +1416,11 @@ main {
     height: auto;
   }
 
+  .hero-location {
+    position: static;
+    margin-block: 1.25rem;
+  }
+
   .site-header {
     top: 0;
     margin-inline: -30px;
@@ -1536,7 +1541,8 @@ main {
   }
 
   .contact-portrait {
-    height: clamp(240px, 44vh, 390px);
+    order: 2;
+    height: clamp(288px, 78vw, 468px);
   }
 
   .contact-portrait img {
@@ -1544,7 +1550,13 @@ main {
   }
 
   .contact-list {
+    order: 1;
     height: auto;
+    padding: 0;
+  }
+
+  .contact-card {
+    flex: none;
   }
 
   .footer-grid {
