@@ -1,7 +1,7 @@
 export const name = "Niklas Franz";
 
 export const heroDescription =
-  "a final-year IT student who builds Vue 3 web applications and manages Linux server infrastructure. I take full ownership of assigned projects — from scoping and development to Docker deployment and production.";
+  "an IT student who builds Vue 3 web applications and manages Linux server infrastructure. I take full ownership of assigned projects — from scoping and development to Docker deployment and production.";
 
 export const heroStatus =
   "Open to full-time roles in web development or DevOps · Berlin & remote";

@@ -1306,6 +1306,11 @@ main {
   }
 }
 
+@keyframes nav-slide-in {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
 @keyframes logo-part-in {
   from {
     translate: var(--move-x) var(--move-y);
@@ -1509,6 +1514,16 @@ main {
   .topbar nav a:first-child {
     margin-top: 0.5rem;
   }
+
+  .topbar--open nav a {
+    animation: nav-slide-in 0.22s ease both;
+  }
+
+  .topbar--open nav a:nth-child(1) { animation-delay: 0.04s; }
+  .topbar--open nav a:nth-child(2) { animation-delay: 0.09s; }
+  .topbar--open nav a:nth-child(3) { animation-delay: 0.14s; }
+  .topbar--open nav a:nth-child(4) { animation-delay: 0.19s; }
+  .topbar--open nav a:nth-child(5) { animation-delay: 0.24s; }
 
   .exp-cards {
     grid-template-columns: 1fr;
