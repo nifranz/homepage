@@ -181,9 +181,10 @@ function handleLogoKeydown(event) {
       aria-label="Toggle navigation"
       @click="menuOpen = !menuOpen"
     >
-      <svg viewBox="0 0 24 24" fill="none" width="20" height="20" aria-hidden="true">
-        <path v-if="!menuOpen" d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path v-else d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <svg class="hb-icon" viewBox="0 0 20 16" fill="none" width="20" height="16" aria-hidden="true">
+        <line class="hb-top" x1="0" y1="2" x2="20" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line class="hb-mid" x1="0" y1="8" x2="20" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line class="hb-bot" x1="0" y1="14" x2="20" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </button>
 

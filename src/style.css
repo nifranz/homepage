@@ -438,6 +438,27 @@ body {
   flex-shrink: 0;
 }
 
+.hb-top,
+.hb-mid,
+.hb-bot {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+.site-header--open .hb-top {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.site-header--open .hb-mid {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.site-header--open .hb-bot {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
 .topbar {
   display: flex;
   align-items: center;
@@ -460,6 +481,7 @@ body {
   color: var(--text);
   text-decoration: none;
   font-size: 0.9rem;
+  font-family: var(--typewriter);
 }
 
 .topbar a:hover {
@@ -1427,20 +1449,15 @@ main {
     padding: 0.6rem 30px;
     border: none;
     border-radius: 0;
-  }
-
-  .site-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    flex-wrap: wrap;
+    row-gap: 0;
     background: color-mix(in srgb, var(--bg-soft), transparent 20%);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
-    z-index: -1;
   }
 
-  .site-header--open::before {
-    border-bottom: none;
+  .site-header::before {
+    content: none;
   }
 
   .site-logo {
@@ -1452,36 +1469,30 @@ main {
   }
 
   .topbar {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: auto;
+    flex: 0 0 100%;
+    position: static;
+    width: 100%;
     margin-left: 0;
     border-radius: 0;
     border: none;
-    border-bottom: 1px solid var(--line);
-    padding: 0.75rem 30px 1rem;
-    background: color-mix(in srgb, var(--bg-soft), transparent 20%);
-    backdrop-filter: blur(12px);
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-6px);
     transition:
-      opacity 0.2s ease,
-      transform 0.22s ease,
-      visibility 0.2s ease;
+      max-height 0.28s ease,
+      opacity 0.22s ease,
+      padding 0.28s ease;
   }
 
   .topbar--open {
+    max-height: 400px;
     opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
+    padding: 0.85rem 0 1rem;
   }
 
   .topbar a {
@@ -1492,6 +1503,11 @@ main {
     flex-direction: column;
     gap: 0.65rem;
     width: 100%;
+    font-size: 1.15rem;
+  }
+
+  .topbar nav a:first-child {
+    margin-top: 0.5rem;
   }
 
   .exp-cards {
