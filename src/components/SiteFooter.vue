@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
   contactLinks: {
     type: Array,
     required: true,
@@ -12,9 +12,20 @@ defineProps({
     type: Array,
     required: true,
   },
+  navigate: {
+    type: Function,
+    default: null,
+  },
 });
 
 const currentYear = new Date().getFullYear();
+
+function handleLegalClick(event, href) {
+  if (props.navigate && href.startsWith("/") && !href.startsWith("//")) {
+    event.preventDefault();
+    props.navigate(href);
+  }
+}
 </script>
 
 <template>
@@ -33,7 +44,7 @@ const currentYear = new Date().getFullYear();
         <h3>Legal</h3>
         <ul>
           <li v-for="item in legalLinks" :key="item.label">
-            <a :href="item.href">{{ item.label }}</a>
+            <a :href="item.href" @click="handleLegalClick($event, item.href)">{{ item.label }}</a>
           </li>
         </ul>
       </section>

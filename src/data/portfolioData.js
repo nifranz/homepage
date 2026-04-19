@@ -199,15 +199,23 @@ export const contactLinks = [
   },
 ];
 
+export const imprintData = {
+  name: "Niklas Franz",
+  address: {
+    street: "Karl-Liebknecht-Str. 91",
+    zip: "14482",
+    city: "Potsdam",
+  },
+  email: "hello@niklasfranz.de",
+  phone: "+49 (0) 151 70395136",
+};
+
 export const footerLegalLinks = [
   {
     label: "Imprint",
-    href: "mailto:hello@niklasfranz.de?subject=Imprint%20Request",
+    href: "/imprint",
   },
-  {
-    label: "Privacy",
-    href: "mailto:hello@niklasfranz.de?subject=Privacy%20Request",
-  },
+
   {
     label: "Legal Inquiries",
     href: "mailto:hello@niklasfranz.de?subject=Legal%20Inquiry",

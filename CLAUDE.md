@@ -56,6 +56,7 @@ src/
     SiteHeader.vue
     SiteFooter.vue
     ScrollArtifacts.vue  # Decorative background sphere/grain
+    ImprintPage.vue      # /imprint subpage — legal disclosure (§ 5 TMG)
   directives/
     reveal.js            # Custom v-reveal scroll-in animation directive
   style.css              # All global styles — single stylesheet, no scoped CSS
@@ -82,6 +83,7 @@ All user-facing content lives here. Components are purely presentational — **n
 | `contactLinks` | `{ label, title, description, icon, href, color }[]` | ContactSection |
 | `footerLegalLinks` | `{ label, href }[]` | SiteFooter |
 | `footerSitemapLinks` | `{ label, href }[]` | SiteFooter |
+| `imprintData` | `{ name, address: { street, zip, city }, email, phone }` | ImprintPage |
 
 ### Field notes
 
@@ -155,9 +157,20 @@ All custom properties are declared in `:root` inside `src/style.css`. Never add 
 
 ## Component architecture
 
+### Routing
+
+`App.vue` implements lightweight client-side routing without Vue Router. `route` is a `ref(window.location.pathname)`. The `navigate(path)` function calls `history.pushState` and updates the ref; `popstate` keeps the ref in sync with browser back/forward. Currently two routes:
+
+| Path | Component |
+|---|---|
+| `/` (default) | Main portfolio page |
+| `/imprint` | ImprintPage |
+
+The `navigate` function is passed as a prop to `SiteHeader`, `SiteFooter`, and `ImprintPage` where needed. SiteHeader uses it to redirect logo clicks to `/` when on a subpage. SiteFooter uses it to intercept internal path links (those starting with `/`) for SPA navigation.
+
 ### Page shell
 
-`App.vue` renders:
+`App.vue` renders the main page as:
 ```
 <div class="page-shell">
   <ScrollArtifacts />          <!-- fixed, z-index 0, pointer-events none -->
@@ -200,8 +213,11 @@ Groups `tools` by `category` computed from the flat array. Each category renders
 ### ProjectsSection
 Alternating two-column timeline layout (odd rows flipped). Each row: title pane (left/right) + content card (right/left). Content card shows `shortDescription` always; full `description` expands via a JS-hooked `<Transition>` animating `max-height` + `opacity`. The transition hooks (`onBeforeEnter`, `onEnter`, `onLeave`) measure `scrollHeight` at runtime — do not use CSS-only `max-height` transitions here. Read more / Read less button is primary style; external links are secondary style.
 
+### ImprintPage
+Full-page component rendered at `/imprint`. Receives `navigate` as a required prop (passed from App.vue routing). Includes `SiteHeader` (with navigate for logo/nav), `SiteFooter` (with navigate for internal links), and `ScrollArtifacts`. Content comes from `imprintData` in portfolioData.js. Uses `.imprint-*` CSS classes. Placeholders for address and phone must be replaced with real data before going live.
+
 ### ScrollArtifacts
-Decorative layer. Renders a grain texture and a micro-sphere element that parallax-tracks via `--scroll-y` / `--scroll-progress` / `--scroll-velocity`. Lives outside `page-content`; never receives pointer events.
+Decorative layer. Renders a grain texture and a micro-sphere element that parallax-tracks via `--scroll-y` / `--scroll-progress` / `--scroll-velocity`. Lives outside `page-content`; never receives pointer events. On ImprintPage, HeroSection is absent so scroll CSS vars stay at 0 — artifacts render at their initial position, which is intentional.
 
 ### v-reveal directive
 Adds `.reveal` + `.reveal-from-{direction}` classes. Triggers `.is-visible` via `IntersectionObserver`. Supports directions: `up`, `down`, `left`, `right`. Options: `delay` (ms), `once` (boolean), `threshold`, `rootMargin`.

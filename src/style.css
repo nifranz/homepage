@@ -1140,6 +1140,102 @@ main {
   font-family: var(--typewriter);
 }
 
+.imprint-section {
+  padding-top: 5rem;
+  padding-bottom: 6rem;
+}
+
+.imprint-content {
+  max-width: 640px;
+}
+
+.imprint-kicker {
+  margin: 0 0 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-family: var(--typewriter);
+}
+
+.imprint-heading {
+  margin: 0 0 2.8rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.imprint-block {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.imprint-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.imprint-block h2 {
+  margin: 0 0 0.75rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.imprint-block p {
+  margin: 0;
+  font-family: var(--typewriter);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.imprint-block a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.imprint-block a:hover {
+  text-decoration: underline;
+}
+
+.imprint-table {
+  border-collapse: collapse;
+  font-family: var(--typewriter);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.imprint-table td {
+  padding: 0;
+  vertical-align: top;
+}
+
+.imprint-table td:first-child {
+  color: var(--muted);
+  padding-right: 2rem;
+  white-space: nowrap;
+}
+
+.imprint-back a {
+  font-family: var(--typewriter);
+  font-size: 0.92rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.imprint-back a:hover {
+  color: var(--accent);
+}
+
 .site-footer {
   margin-top: 0;
   margin-inline: -30px;

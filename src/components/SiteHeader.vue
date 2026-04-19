@@ -1,6 +1,13 @@
 <script setup>
 import { ref } from "vue";
 
+const props = defineProps({
+  navigate: {
+    type: Function,
+    default: null,
+  },
+});
+
 const logoRef = ref(null);
 const menuOpen = ref(false);
 
@@ -41,8 +48,12 @@ function replayLogoAnimation() {
 }
 
 function handleLogoActivate() {
-  scrollToTop();
-  replayLogoAnimation();
+  if (props.navigate) {
+    props.navigate("/");
+  } else {
+    scrollToTop();
+    replayLogoAnimation();
+  }
 }
 
 function handleLogoKeydown(event) {
@@ -51,6 +62,8 @@ function handleLogoKeydown(event) {
     handleLogoActivate();
   }
 }
+
+const isSubpage = !!props.navigate;
 </script>
 
 <template>
@@ -190,11 +203,14 @@ function handleLogoKeydown(event) {
 
     <div class="topbar" :class="{ 'topbar--open': menuOpen }">
       <nav>
-        <a href="#" @click.prevent="() => { scrollToTop(); menuOpen = false; }">Home</a>
-        <a href="#expertise" @click="menuOpen = false">Experience</a>
-        <a href="#tools" @click="menuOpen = false">Tools</a>
-        <a href="#projects" @click="menuOpen = false">Projects</a>
-        <a href="#contact" @click="menuOpen = false">Contact</a>
+        <a
+          :href="isSubpage ? '/' : '#'"
+          @click.prevent="() => { isSubpage ? navigate('/') : scrollToTop(); menuOpen = false; }"
+        >Home</a>
+        <a :href="isSubpage ? '/#expertise' : '#expertise'" @click="menuOpen = false">Experience</a>
+        <a :href="isSubpage ? '/#tools' : '#tools'" @click="menuOpen = false">Tools</a>
+        <a :href="isSubpage ? '/#projects' : '#projects'" @click="menuOpen = false">Projects</a>
+        <a :href="isSubpage ? '/#contact' : '#contact'" @click="menuOpen = false">Contact</a>
       </nav>
     </div>
   </header>
